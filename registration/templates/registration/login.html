@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static '/css/registration.css' %}">
+
+    <title>Login Page</title>
+</head>
+<body class="RegistrationPage">
+
+    <header>
+        <img class="logo" src="{% static '/images/Logo/cover.png' %}" alt="" />
+    </header>
+
+
+    <div class="heading">
+        <h2>Login Here</h2>
+    </div>
+
+
+    <main class="input">
+
+        <form class="details" action="" method="POST">
+            {% csrf_token %} <!--  Safer way of Sending DATA -->
+            
+            {{form.username}}
+    
+            
+            {{form.email}}
+    
+            
+            {{form.password1}}
+    
+            
+            {{form.password2}}
+            <br>
+    
+            <input type="submit" value="Register">
+        </form>
+
+    </main>
+
+    <p class="login">Dont't have an account ? <a href=" {% url 'register' %} ">Sign Up</a> </p>
+    
+    <script>
+        var form_fields = document.getElementsByTagName('input')
+        form_fields[1].placeholder = 'Username';
+        form_fields[2].placeholder = 'Email-Id';
+        form_fields[3].placeholder = 'Password';
+        form_fields[4].placeholder = 'Confirm Password';
+    </script>
+
+</body>
+</html>

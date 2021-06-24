@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Add CSS Files Here -->
+
+    <!-- 'styles.css' At The Top -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/home.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/explore.css' %}" />
+    <link rel="stylesheet" href="{% static './css/order.css' %}" />
+
+    <!-- End CSS -->
+
+    <title>Bar Stock Exchange</title>
+</head>
+
+<body class="homePageBody">
+    <header>
+        <img class="logo" src="{% static '/images/Logo/cover.png' %}" alt="" />
+    </header>
+
+    <main class="orderPage mainSection active" id="orderPage">
+        <div class="heading">
+        <span class="headingName">Order</span>
+        </div>
+
+        <div class="orderGrid">
+        <table cellspacing="10">
+            <col width="45%" />
+            <col width="1%" />
+            <col width="30%" />
+            <col width="40%" />
+            <tr>
+            <th>Dish Name</th>
+            <th>Qty</th>
+            <th></th>
+            <th>Amount</th>
+            </tr>
+
+            {% if all_ordered %}
+            {% for order in all_ordered %}
+            <tr>
+            <td>{{order.dish_name}}</td>
+            <td>{{order.qty}}</td>
+            {% if order.cooked %}
+            <td class="eat"><span></span>Eat</td>
+            {% else %}
+            <td class="cook"><span></span>Cook</td>
+            {% endif %}
+            <td>
+                <img src="{% static '/images/rupee.png' %}" alt="" />{{order.price}}
+            </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        </table>
+        <h4 style="color: white; font-weight: 300; text-align: center;">
+            No Dish Ordered
+        </h4>
+        {% endif %}
+
+        </div>
+
+    </main>
+
+    <footer>
+		<div class="footerGrid">
+			<a href="{% url 'homePage' %}">
+				<li id="homeSlide" class="footerTab " >
+					<img src="{% static '/images/home.png' %}" alt="" />
+					<img src="{% static '/images/home1.png' %}" alt="" />
+					<span>Home</span>
+				</li>
+			</a>
+	
+			<a href="{% url 'explorePage' %}">
+				<li id="exploreSlide" class="footerTab" >
+					<img src="{% static '/images/explore.png' %}" alt="" />
+					<img src="{% static '/images/explore1.png' %}" alt="" />
+					<span>Explore</span>
+				</li>
+			</a>
+	
+			<a href="{% url 'orderPage' %}">
+				<li id="orderSlide" class="footerTab" >
+					<img src="{% static '/images/ordered.png' %}" alt="" />
+					<img src="{% static '/images/ordered1.png' %}" alt="" />
+					<span>Order</span>
+				</li>
+			</a>
+		</div>
+
+		
+
+	</footer>
+
+</body>
+
+</html>
