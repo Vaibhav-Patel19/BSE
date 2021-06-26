@@ -19,12 +19,15 @@ from registration import views as registration
 from main import views as mainViews
 from django.conf.urls import url
 
+#The include() function allows referencing other URLconfs.
+#  Whenever Django encounters include(), it chops off whateve
+#  part of the URL matched up to that point and sends the 
+#  remaining string to the included URLconf for further processing.
+
 urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('', include('registration.urls')),
     path('login/', include('registration.urls')),
-    path('home/', mainViews.homePage, name="homePage"),
-    path('explore/', mainViews.explorePage, name="explorePage"),
-    path('order/', mainViews.orderPage, name="orderPage"),
+    path('', include('main.urls')),
 ]
