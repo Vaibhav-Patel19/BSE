@@ -24,6 +24,7 @@ class foodMenu(models.Model):
         ("10", "Desserts"),
     )
 
+
     foodtype = models.CharField(choices=foodtype, max_length=10)
     cuisine = models.CharField(choices=all_cuisine, max_length=50, blank=True)
     name = models.CharField(max_length=50, blank=True)

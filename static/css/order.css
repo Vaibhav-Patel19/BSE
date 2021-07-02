@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap");
+
+root {
+  --orange: #ef6848;
+  --black: #181818;
+  --darkGray: #313131;
+  --white: #ffffff;
+  --lightOrange: #ff9c51;
+  --yellowOrange: #ffb650;
+}
+
+@media only screen and (max-width: 500px) {
+  .orderPage .orderGrid {
+    margin: 10px 5px;
+    padding: 0 15px;
+    max-height: calc(100vh - 240px);
+    overflow-y: scroll;
+  }
+
+  .orderPage .orderGrid table {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: -30px;
+    border-spacing: 0 2em;
+  }
+
+  .orderPage .orderGrid table th {
+    text-align: center;
+    color: var(--orange);
+  }
+
+  .orderPage .orderGrid table td {
+    text-align: center;
+    color: white;
+    /* max-width: 150px;
+    max-height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; */
+  }
+
+  .orderPage .orderGrid table td i {
+    font-size: 0.8;
+    font-weight: 700;
+  }
+
+  .orderPage .orderGrid table th:nth-child(1) {
+    padding-right: 25px;
+    text-align: left;
+  }
+
+  .orderPage .orderGrid table td:nth-child(1) {
+    padding-right: 15px;
+    text-align: left;
+  }
+
+  .orderPage .orderGrid table td span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #ff3a0ee5;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  .orderPage .orderGrid table td:nth-child(3) {
+    text-align: left;
+    padding-left: 15px;
+    color: #ff3a0ee5;
+  }
+
+  .orderPage .orderGrid table td:nth-child(4) {
+    text-align: right;
+    padding-right: 5px;
+  }
+
+  .orderPage .orderGrid table td.cook {
+    color: var(--yellowOrange);
+  }
+
+  .orderPage .orderGrid table td.cook span {
+    background: var(--yellowOrange);
+  }
+
+  .orderPage .orderGrid table td.eat {
+    color: #3bb43b;
+  }
+
+  .orderPage .orderGrid table td.eat span {
+    background: #3bb43b;
+  }
+
+  .orderPage .orderGrid table td:nth-child(4) img {
+    width: 12px;
+    display: inline-block;
+    margin-right: 2px;
+  }
+
+  .orderPage .orderGrid .total {
+    margin-top: -30px;
+  }
+
+  .orderPage .orderGrid .total h4 {
+    width: 30%;
+    text-align: right;
+    float: right;
+    padding-top: 10px;
+    padding-right: 5px;
+    border-top: 2px solid #ff3a0ee5;
+    color: white;
+    font-weight: 400;
+  }
+
+  .orderPage .orderGrid .total h4 img {
+    width: 12px;
+    display: inline-block;
+    margin-right: 2px;
+  }
+}
