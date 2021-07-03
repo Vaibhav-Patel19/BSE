@@ -15,8 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from registration import views as registration
-from main import views as mainViews
 from django.conf.urls import url
 
 #The include() function allows referencing other URLconfs.
@@ -28,6 +26,5 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('', include('registration.urls')),
-    path('login/', include('registration.urls')),
     path('', include('main.urls')),
 ]

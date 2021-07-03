@@ -45,14 +45,14 @@
 
     </main>
 
-    <p class="login">Dont't have an account ? <a href=" {% url 'register' %} ">Sign Up</a> </p>
+    <p class="login">Dont't have an account ? <a href=" {% url 'registerPage' %} ">Sign Up</a> </p>
     
     <script>
         var form_fields = document.getElementsByTagName('input')
         form_fields[1].placeholder = 'Username';
         form_fields[2].placeholder = 'Email-Id';
         form_fields[3].placeholder = 'Password';
-        form_fields[4].placeholder = 'Confirm Password';
+        form_fields[4].placeholder = 'Confirm Password'; 
     </script>
 
 </body>
