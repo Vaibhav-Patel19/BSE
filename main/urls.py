@@ -7,4 +7,5 @@ urlpatterns = [
     path('explore/', views.explorePage, name="explorePage"),
     path('menu/<str:cuisine>', views.showMenu, name="showMenu"),
     path('order/', views.orderPage, name="orderPage"),
+    path('barmenu/<str:drinktype>', views.showBarMenu, name="showBarMenu"),
 ]

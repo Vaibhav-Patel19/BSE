@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import foodMenu
+from .models import foodMenu, barMenu
 
 # Create your views here.
 
@@ -49,13 +49,33 @@ def explorePage(request):
         ("10", "Desserts"),
     )
 
+    all_drinktype = (
+        ("1", "Beer"),
+        ("2", "Cocktail"),
+        ("3", "Gin"),
+        ("4", "Red Wine"),
+        ("5", "Sparkling Wine"),
+        ("6", "Vodka"),
+        ("7", "Whiskey"),
+        ("8", "White Wine"),
+    )
+
     #For diplaying different cuisines in explore page
     allcuisine = foodMenu.objects.order_by('cuisine').values('cuisine').distinct()
     for i in allcuisine:
         number = int(i['cuisine']) - 1
         i['cuisine'] = all_cuisine[number][1]
 
-    return render(request, "main/explore.html", {'allcuisine': allcuisine})
+
+    #for displaying Drinktypes in Explore Page
+    alldrinks = barMenu.objects.order_by('drinktype').values('drinktype').distinct()
+    for i in alldrinks:
+        number = int(i['drinktype']) - 1
+        i['drinktype'] = all_drinktype[number][1]
+
+
+
+    return render(request, "main/explore.html", {'allcuisine': allcuisine, 'alldrinks': alldrinks})
 
 def orderPage(request):
     return render(request, "main/order.html")
@@ -84,3 +104,21 @@ def showMenu(request, cuisine):
     all_dish = foodMenu.objects.all().filter(cuisine__icontains=cuisine)
 
     return render(request, "main/menu.html",{'all_dish': all_dish, 'cuisine': cuisinename})
+
+def showBarMenu(request, drinktype):
+
+    all_drinktype = (
+        ("1", "Beer"),
+        ("2", "Cocktail"),
+        ("3", "Gin"),
+        ("4", "Red Wine"),
+        ("5", "Sparkling Wine"),
+        ("6", "Vodka"),
+        ("7", "Whiskey"),
+        ("8", "White Wine"),
+    )
+
+    all_drinks = barMenu.objects.all().filter(drinktype_icontains=drinktype)
+
+
+    return render(request, "main/barmenu.html",{'all_drinks': all_drinks, 'drinktype': drinktype})

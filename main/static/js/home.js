@@ -1,5 +1,5 @@
 
-function changePannel(liElement, pannel) {
+changePannel = (liElement, pannel) => {
     var liEl = document.getElementsByClassName("liEl");
     for (let i = 0; i < liEl.length; i++) {
         liEl[i].classList.remove("active");
@@ -26,7 +26,7 @@ exploreSwitch = (clickedTab, type) => {
 
     clickedTab.classList.add("active");
 
-    var c = document.getElementsByClassName("cuisines");
+    var c = document.getElementsByClassName("cusines");
 
     for(let i = 0; i < c.length; i++){
         c[i].classList.remove("active");
@@ -35,6 +35,7 @@ exploreSwitch = (clickedTab, type) => {
     t.classList.add("active");
 
 }
+
 
 
 

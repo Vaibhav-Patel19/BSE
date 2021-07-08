@@ -41,7 +41,9 @@
         <div class="quantityModal remove" id="quantity">
             <div class="header">
                 <button id="backBtn" onclick="modalClose()">Back</button>
-                <span id="dishType">Beer</span>
+                
+                {% comment %} Cuisine will come below {% endcomment %}
+                <span id="dishType"> </span>
             </div>
 
             <div class="dish">
@@ -55,7 +57,7 @@
         </div>
 
         <div class="confirmModal remove" id="confirm">
-            <h2 id="dishName1"></h2>
+            <h2 id="dishName2"></h2>
             <h4 id="quantity1"></h4>
             <h4>Are you Sure ?</h4>
             <div class="flexbox" id="submitDish">
@@ -64,6 +66,8 @@
 
         </div>
     </div>
+
+
 
     <div class="itemList">
         {% for dish in all_dish %}
@@ -80,7 +84,7 @@
                 <div class="right-2">
 
                     <button class="addbutton" data-name="{{ dish.name }}" data-type="{{cuisine}}"
-                        data-price="{{ dish.price }}" data-cuisine="{{ cuisine }}" onclick="modal(this)">
+                        data-price="{{ dish.price }}" data-cuisine="{{ cuisine }}" onclick="addFunction(this)">
                         ADD </button>
                         
                 </div>
@@ -126,101 +130,6 @@
     </script>
 
     <script src="{% static 'js/menu.js' %}"></script>
-
-    {% comment %} <script>
-
-        function yesConfirm(dname, dqty, dprice, dcuisine) {
-
-            $.ajax({
-                type: "POST",
-                url: "{% url 'showMenu' 'asd' %}".replace('asd', dcuisine),
-                data: {
-                    csrfmiddlewaretoken: "{{ csrf_token }}",   // < here 
-                    state: "inactive",
-                    dname: dname,
-                    dqty: parseInt(dqty, 10),
-                    dprice: parseInt(dprice, 10),
-                },
-                success: function () {
-                    window.location.href = '/home/1/'
-                }
-            });
-
-        }
-
-        function noConfirm() {
-
-            var quantity = document.getElementById("quantity");
-            quantity.classList.remove("remove");
-
-
-            var confirm = document.getElementById("confirm");
-            confirm.classList.add("remove");
-
-        }
-
-
-        function confirmDish(dname, dqty, dprice, dcuisine) {
-
-            var quantity = document.getElementById("quantity");
-            quantity.classList.add("remove");
-
-            var dishName1 = document.getElementById("dishName1");
-            var quantity1 = document.getElementById("quantity1");
-            var submitDish = document.getElementById("submitDish");
-
-            submitDish.innerHTML = `
-            <button id="submitDish" 
-            onclick="yesConfirm('${dname}', '${dqty}', '${dprice}', '${dcuisine}')"> 
-            Yes </button>
-            <button onclick="noConfirm()"> No </button>`
-
-            dishName1.innerHTML = dname;
-            quantity1.innerHTML = "Quantity Choosen : " + dqty;
-
-
-            var confirm = document.getElementById("confirm");
-            confirm.classList.remove("remove");
-
-        }
-
-        function modalClose() {
-            var modal = document.getElementById("modal");
-            var quantity = document.getElementById("quantity");
-
-            modal.classList.add("remove");
-            quantity.classList.add("remove");
-        }
-
-        function modal(dish) {
-            var modal = document.getElementById("modal");
-            var quantity = document.getElementById("quantity");
-            var quantityList = document.getElementById("quantityList");
-            var dishType = document.getElementById("dishType");
-            var dishName = document.getElementById("dishName");
-
-            dishType.innerHTML = dish.dataset.type;
-            dishName.innerHTML = dish.dataset.name;
-
-            dname = dish.dataset.name;
-            dtype = dish.dataset.type;
-            dprice = dish.dataset.price;
-            dcuisine = dish.dataset.cuisine;
-
-            modal.classList.remove("remove");
-            quantity.classList.remove("remove");
-
-            quantityList.innerHTML = "";
-
-            for (let i = 1; i <= 10; i++) {
-                quantityList.innerHTML += `
-                    <li onclick = "confirmDish('${dname}', '${i}', '${dprice}', '${dcuisine}')">${i}</li>
-                `
-            }
-        }
-
-    </script> {% endcomment %}
-
 
 </body>
 

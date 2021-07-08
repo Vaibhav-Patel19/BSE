@@ -211,7 +211,7 @@ body {
     box-shadow: 7px 7px 20px black, -2px -2px 15px rgba(0, 0, 0, 0.418);
   }
   .quantityModal h2,
-  #dishName1 {
+  #dishName2 {
     text-align: center;
     color: #ef6848;
     font-weight: 800;
@@ -225,7 +225,7 @@ body {
     border-bottom: 2px solid #5f5f5f80;
   }
 
-  #dishName1 {
+  #dishName2 {
     border-bottom: none;
     padding: 0 10px 0;
   }
