@@ -46,6 +46,14 @@ body {
     font-family: "Montserrat", sans-serif;
     width: auto;
     margin-left: 8px;
+    display: grid;
+    grid-template-columns: 55% 25%;
+    column-gap: 20%;
+    text-decoration: none;
+  }
+
+  .MenuPage .heading .headingName a{
+    color: white;
   }
 
   .MenuPage .headingName {

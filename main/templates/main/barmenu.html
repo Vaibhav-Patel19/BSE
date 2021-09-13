@@ -35,14 +35,15 @@
     </header>
 
     <div class="heading">
-        <span class="headingName">{{drinktype}}</span>
+        <span class="headingName">{{drinkname}}</span>
+        <span class="headingName"> <a href="{% url 'explorePage' %}">Back</a> </span>
     </div>
 
     <div class="modal remove" id="modal">
         <div class="quantityModal remove" id="quantity">
             <div class="header">
                 <button id="backBtn" onclick="modalClose()">Back</button>
-                <span id="dishType">Beer</span>
+                <span id="dishType">{{drinkname}}</span>
             </div>
 
             <div class="dish">
@@ -53,6 +54,17 @@
                 </ul>
             </div>
         </div>
+
+        <div class="confirmModal remove" id="confirm">
+            <h2 id="dishName2"></h2>
+            <h4 id="quantity1"></h4>
+            <h4>Are you Sure ?</h4>
+            <div class="flexbox" id="submitDish">
+
+            </div>
+
+        </div>
+        
     </div>
 
     <div class="itemList" id="drinkList">
@@ -67,10 +79,14 @@
 
             <div class="right">
                 <div class="right-2">
-                    <button class="addbutton" data-name="{{ drink.name }}" data-type="{{drinktype}}"
-                        data-price="{{ drink.current_price }}" data-savings="{{ drink.savings }}"
-                        data-type="{{ drinktype }}" onclick="modal(this)">
-                        ADD </button>
+                    <button class="addbutton" 
+                        data-name="{{ drink.name }}" 
+                        data-price="{{ drink.current_price }}" 
+                        data-savings="{{ drink.savings }}"
+                        data-type="{{ drinkname }}" 
+                        onclick="addFunction(this)">
+                        ADD 
+                    </button>
                 </div>
             </div>
         </div>

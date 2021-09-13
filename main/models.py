@@ -72,3 +72,19 @@ class barMenu(models.Model):
 
     class Meta:
         verbose_name_plural = "Bar Menu"
+
+
+class foodOrder(models.Model):
+
+    dishName = models.CharField(max_length=50, blank=True)
+    price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
+    quantity = models.IntegerField(null=True)
+    cooked = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.dishName
+
+    class Meta:
+        verbose_name_plural = "Ordered Food"    
+        # This class will add a title in DB.
+    

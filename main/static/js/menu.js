@@ -1,13 +1,16 @@
 
-function addFunction(dish) {
+addFunction = (dish) => {
 
     var modal = document.getElementById("modal");
-    var quantity = document.getElementById("quantity");
-    var quantityList = document.getElementById("quantityList");
-    var dishType = document.getElementById("dishType");
-    var dishName = document.getElementById("dishName");
+    modal.classList.remove("remove");
 
+    var quantity = document.getElementById("quantity");
+    quantity.classList.remove("remove");
+
+    var dishType = document.getElementById("dishType");
     dishType.innerHTML = dish.dataset.type;
+
+    var dishName = document.getElementById("dishName");    
     dishName.innerHTML = dish.dataset.name;
 
     dname = dish.dataset.name;
@@ -15,9 +18,7 @@ function addFunction(dish) {
     dprice = dish.dataset.price;
     dcuisine = dish.dataset.cuisine;
 
-    modal.classList.remove("remove");
-    quantity.classList.remove("remove");
-
+    var quantityList = document.getElementById("quantityList");
     quantityList.innerHTML = "";
 
     //This Part - 1
@@ -32,13 +33,13 @@ function addFunction(dish) {
 
 function modalClose() {
     var modal = document.getElementById("modal");
-    var quantity = document.getElementById("quantity");
-
     modal.classList.add("remove");
+
+    var quantity = document.getElementById("quantity");
     quantity.classList.add("remove");
 }
 
-function confirmDish(dname, dqty, dprice, dcuisine) {
+confirmDish = (dname, dqty, dprice, dcuisine) => {
 
     var quantity = document.getElementById("quantity");
     quantity.classList.add("remove");
@@ -51,6 +52,11 @@ function confirmDish(dname, dqty, dprice, dcuisine) {
 
     var submitDish = document.getElementById("submitDish");
 
+    //  Yes No confirms Box Appears
+    var confirm = document.getElementById("confirm");
+    confirm.classList.remove("remove");
+
+    // JSON Object
     submitDish.innerHTML = `
     <button id="submitDish" onclick="yesConfirm('${dname}', '${dqty}', '${dprice}', '${dcuisine}')"> 
         Yes 
@@ -59,22 +65,35 @@ function confirmDish(dname, dqty, dprice, dcuisine) {
     <button onclick="noConfirm()">
         No 
     </button>`
-
-
-    var confirm = document.getElementById("confirm");
-    confirm.classList.remove("remove");
-
 }
 
-function noConfirm() {
+noConfirm = () => {
 
+    // Qunatity List Appears
     var quantity = document.getElementById("quantity");
     quantity.classList.remove("remove");
 
-
+    // Yes No confirms Box Disappers
     var confirm = document.getElementById("confirm");
     confirm.classList.add("remove");
+}
 
+function yesConfirm(dname, dqty, dprice, dcuisine){
+
+    $.ajax({
+        type: 'POST',
+        url: "{% url 'showMenu' 'asd' %}".replace('asd', dcuisine),
+        data: {
+            'csrfmiddlewaretoken': '{{ csrf_token }}',
+            state: "inactive",
+            dname: dname,
+            dqty: parseInt(dqty, 10),
+            dprice: parseInt(dprice, 10),
+        }, 
+        success: function () {
+            window.location.href = '/home/'
+        }
+    });
 }
 
 // function yesConfirm(dname, dqty, dprice, dcuisine) {

@@ -35,8 +35,10 @@
 
     <div class="heading">
         <span class="headingName">{{cuisine}}</span>
+        <span class="headingName"> <a href="{% url 'explorePage' %}">Back</a> </span>
     </div>
 
+    {% comment %} When you click on ADD Button {% endcomment %}
     <div class="modal remove" id="modal">
         <div class="quantityModal remove" id="quantity">
             <div class="header">
@@ -60,14 +62,13 @@
             <h2 id="dishName2"></h2>
             <h4 id="quantity1"></h4>
             <h4>Are you Sure ?</h4>
-            <div class="flexbox" id="submitDish">
-
-            </div>
-
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="flexbox" id="submitDish">
+                </div>
+            </form>
         </div>
     </div>
-
-
 
     <div class="itemList">
         {% for dish in all_dish %}
@@ -85,7 +86,8 @@
 
                     <button class="addbutton" data-name="{{ dish.name }}" data-type="{{cuisine}}"
                         data-price="{{ dish.price }}" data-cuisine="{{ cuisine }}" onclick="addFunction(this)">
-                        ADD </button>
+                        ADD 
+                    </button>
                         
                 </div>
             </div>
