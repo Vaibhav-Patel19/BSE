@@ -86,9 +86,9 @@ function yesConfirm(dname, dqty, dprice, dcuisine){
         data: {
             'csrfmiddlewaretoken': '{{ csrf_token }}',
             state: "inactive",
-            dname: dname,
-            dqty: parseInt(dqty, 10),
-            dprice: parseInt(dprice, 10),
+            'dname': dname,
+            'dqty': parseInt(dqty, 10),
+            'dprice': parseInt(dprice, 10),
         }, 
         success: function () {
             window.location.href = '/home/'

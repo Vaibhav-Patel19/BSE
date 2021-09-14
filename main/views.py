@@ -121,9 +121,9 @@ def showMenu(request, cuisine):
 
     #For Sending Order
     if request.method == "POST":
-        dname = request.POST['dname']
-        dqty = request.POST['dqty']
-        dprice = request.POST['dprice']
+        dname = request.POST.get('dname', False)
+        dqty = request.POST.get('dqty', False)
+        dprice = request.POST.get('dprice', False)
         totamt = int(dprice) * int(dqty)
 
         order = foodOrder.objects.create(
