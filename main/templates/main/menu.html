@@ -45,7 +45,9 @@
                 <button id="backBtn" onclick="modalClose()">Back</button>
                 
                 {% comment %} Cuisine will come below {% endcomment %}
-                <span id="dishType"> </span>
+                <span id="dishType"> 
+
+                </span>
             </div>
 
             <div class="dish">
@@ -59,10 +61,10 @@
         </div>
 
         <div class="confirmModal remove" id="confirm">
-            <h2 id="dishName2"></h2>
-            <h4 id="quantity1"></h4>
+            <h2 name = "dname" id="dishName2"></h2>
+            <h4 name = "dqty" id="quantity1"></h4>
             <h4>Are you Sure ?</h4>
-            <form action="" method="POST">
+            <form method = "POST" action = "">
                 {% csrf_token %}
                 <div class="flexbox" id="submitDish">
                     <!-- Yes and No Confirm Dialog Box -->
@@ -78,7 +80,7 @@
             <div class="left">
                 <span>{{ dish.name }}
                     <br />
-                    <span class="price"> ₹ {{ dish.price }}</span>
+                    <span name = "dprice" class="price"> ₹ {{ dish.price }}</span>
                 </span>
             </div>
 

@@ -1,15 +1,19 @@
 
 addFunction = (dish) => {
 
+    // Quantity selection box will become active
     var modal = document.getElementById("modal");
     modal.classList.remove("remove");
 
+    // quantity List
     var quantity = document.getElementById("quantity");
     quantity.classList.remove("remove");
 
+    // Set the Cuisine Name 
     var dishType = document.getElementById("dishType");
     dishType.innerHTML = dish.dataset.type;
 
+    // Set the Dish Name 
     var dishName = document.getElementById("dishName");    
     dishName.innerHTML = dish.dataset.name;
 
@@ -24,7 +28,7 @@ addFunction = (dish) => {
     //This Part - 1
     for (let i = 1; i <= 10; i++) {
         quantityList.innerHTML += `
-            <li onclick = "confirmDish('${dname}', '${i}', '${dprice}', '${dcuisine}')">
+            <li name="dqty" onclick = "confirmDish('${dname}', '${i}', '${dprice}', '${dcuisine}')">
                 ${i}
             </li>
         `
@@ -41,12 +45,15 @@ function modalClose() {
 
 confirmDish = (dname, dqty, dprice, dcuisine) => {
 
+    // Remove qunatity list
     var quantity = document.getElementById("quantity");
     quantity.classList.add("remove");
 
+    // Set dish name in confirm box
     var dishName2 = document.getElementById("dishName2");
     dishName2.innerHTML = dname;
 
+    // Set chosen quautity for confirmation
     var quantity1 = document.getElementById("quantity1");
     quantity1.innerHTML = "Quantity Choosen : " + dqty;
 
@@ -80,37 +87,23 @@ noConfirm = () => {
 
 function yesConfirm(dname, dqty, dprice, dcuisine){
 
+    // shorthand Ajax function
+    
     $.ajax({
-        type: 'POST',
+        type: "POST",
         url: "{% url 'showMenu' 'asd' %}".replace('asd', dcuisine),
         data: {
-            'csrfmiddlewaretoken': '{{ csrf_token }}',
+            csrfmiddlewaretoken: '{{ csrf_token }}',
             state: "inactive",
-            'dname': dname,
-            'dqty': parseInt(dqty, 10),
-            'dprice': parseInt(dprice, 10),
+            dname: dname,
+            dqty: parseInt(dqty, 10),
+            dprice: parseInt(dprice, 10),
         }, 
         success: function () {
-            window.location.href = '/home/'
-        }
+            window.location.href = '/explore/'
+        }, 
+        dataType: "json"
     });
+
+    // console.log(dname);
 }
-
-// function yesConfirm(dname, dqty, dprice, dcuisine) {
-
-//     $.ajax({
-//         type: "POST",
-//         url: "{% url 'showMenu' 'asd' %}".replace('asd', dcuisine),
-//         data: {
-//             csrfmiddlewaretoken: "{{ csrf_token }}",   // < here 
-//             state: "inactive",
-//             dname: dname,
-//             dqty: parseInt(dqty, 10),
-//             dprice: parseInt(dprice, 10),
-//         },
-//         success: function () {
-//             window.location.href = '/home/1/'
-//         }
-//     });
-
-// }

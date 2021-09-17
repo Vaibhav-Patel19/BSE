@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from .models import foodMenu, barMenu, foodOrder
-from django.views.decorators.cache import cache_page
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
 
 # Create your views here.
 
@@ -94,8 +93,8 @@ def explorePage(request):
     return render(request, "main/explore.html", {'allcuisine': allcuisine, 'alldrinks': alldrinks})
 
 
-@cache_page(60 * 15)
 @csrf_protect
+@csrf_exempt
 def showMenu(request, cuisine):
     all_cuisine = (
         ("1", "Soup"),
@@ -116,24 +115,25 @@ def showMenu(request, cuisine):
             cuisine = c[0]
             break
 
-    all_dish = foodMenu.objects.all().filter(cuisine__icontains = cuisine)
-
-
     #For Sending Order
-    if request.method == "POST":
+    if request.method == 'POST':
+        
         dname = request.POST.get('dname', False)
         dqty = request.POST.get('dqty', False)
         dprice = request.POST.get('dprice', False)
         totamt = int(dprice) * int(dqty)
 
-        order = foodOrder.objects.create(
+        if dname != False:
+            order = foodOrder.objects.create(
             dishName = dname,
             price = totamt,
             quantity = dqty,
             cooked = False
         )
 
-    return render(request, "main/menu.html",{'all_dish': all_dish, 'cuisine': cuisinename})
+    all_dish = foodMenu.objects.all().filter(cuisine__icontains = cuisine)
+
+    return render(request, "main/menu.html", {'all_dish': all_dish, 'cuisine': cuisinename})
 
 
 
