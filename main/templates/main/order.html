@@ -48,11 +48,11 @@
             <th>Amount</th>
             </tr>
 
-            {% if all_ordered %}
-            {% for order in all_ordered %}
+            {% if ordered %}
+            {% for order in ordered %}
             <tr>
-            <td>{{order.dish_name}}</td>
-            <td>{{order.qty}}</td>
+            <td>{{order.dishName}}</td>
+            <td>{{order.quantity}}</td>
             {% if order.cooked %}
             <td class="eat"><span></span>Eat</td>
             {% else %}
@@ -100,6 +100,14 @@
 					<span>Order</span>
 				</li>
 			</a>
+
+            <a href="{% url 'logoutUser' %}">
+				<li id="orderSlide" class="footerTab" >
+					<i style="color:white" class="fas fa-sign-out-alt"></i>
+					<span>Logout</span>
+				</li>
+			</a>
+            
 		</div>
 
 		

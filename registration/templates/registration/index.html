@@ -45,9 +45,9 @@
 
     </main>
 
-    <p class="errors"> 
+    <p id = "errors" class="login"> 
 
-        {{form.errors}}
+        {{form.errors}} {% comment %} Any Errors we have in our form, like password missmatch, common password will be shown {% endcomment %}
 
     </p>
 

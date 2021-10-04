@@ -28,32 +28,29 @@
         <form class="details" action="" method="POST">
             {% csrf_token %} <!--  Safer way of Sending DATA -->
             
-            {{form.username}}
-    
-            
-            {{form.email}}
-    
-            
-            {{form.password1}}
-    
-            
-            {{form.password2}}
+            <input type="text" name="username" id="" placeholder="Username">
+
+            <input type="password" name="password" id="" placeholder="Password">
+
             <br>
     
-            <input type="submit" value="Register">
+            <input type="submit" value="LOGIN">
         </form>
+        {% for message in messages %}
+            <p class = "login"> {{message}} </p>
+        {% endfor %}
 
     </main>
 
     <p class="login">Dont't have an account ? <a href=" {% url 'registerPage' %} ">Sign Up</a> </p>
     
-    <script>
+    <!-- <script>
         var form_fields = document.getElementsByTagName('input')
         form_fields[1].placeholder = 'Username';
         form_fields[2].placeholder = 'Email-Id';
         form_fields[3].placeholder = 'Password';
         form_fields[4].placeholder = 'Confirm Password'; 
-    </script>
+    </script> -->
 
 </body>
 </html>

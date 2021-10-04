@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="{% static '/css/styles.css' %}" />
     <link rel="stylesheet" href="{% static '/css/home.css' %}" />
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static '/css/menu.css' %}" />
 
     <style>
@@ -122,6 +123,13 @@
 					<img src="{% static '/images/ordered.png' %}" alt="" />
 					<img src="{% static '/images/ordered1.png' %}" alt="" />
 					<span>Order</span>
+				</li>
+			</a>
+
+            <a href="{% url 'logoutUser' %}">
+				<li id="orderSlide" class="footerTab" >
+					<i style="color:white;" class="fas fa-sign-out-alt"></i>
+					<span>Logout</span>
 				</li>
 			</a>
 		</div>

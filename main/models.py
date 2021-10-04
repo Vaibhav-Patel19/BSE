@@ -1,9 +1,7 @@
 from django.db import models
-# from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 
 # Create your models here.
-
-# User = get_user_model()
 
 class foodMenu(models.Model):
     foodtype = (
@@ -74,15 +72,20 @@ class barMenu(models.Model):
         verbose_name_plural = "Bar Menu"
 
 
-class foodOrder(models.Model):
 
-    dishName = models.CharField(max_length=50, blank=True)
-    price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
-    quantity = models.IntegerField(null=True)
-    cooked = models.BooleanField(default=False)
+#CASCADE: When the referenced object is deleted, 
+# also delete the objects that have references to it 
+# (when you remove a blog post for instance, you might 
+# want to delete comments as well). SQL equivalent: CASCADE.
+class foodOrder(models.Model):
+    user = models.ForeignKey(User, on_delete = models.CASCADE, default = None, null = True)
+    dishName = models.CharField(max_length = 50, blank = True)
+    price = models.DecimalField(max_digits = 6, decimal_places = 2, null = True)
+    quantity = models.IntegerField(null = True)
+    cooked = models.BooleanField(default = False)
 
     def __str__(self):
-        return self.dishName
+        return str(self.user) + " - " + self.dishName + "  |  Quantity = " + str(self.quantity)
 
     class Meta:
         verbose_name_plural = "Ordered Food"    

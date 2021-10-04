@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from .models import foodMenu, barMenu, foodOrder
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required(login_url = '/login')
 def homePage(request):
 
     all_cuisine = (
@@ -50,7 +52,7 @@ def homePage(request):
     return render(request, "main/home.html", {"newest": newest, "recommended": recommended, "recommended_drink": recommended_drink})
 
 
-
+@login_required(login_url = '/login')
 def explorePage(request):
 
     all_cuisine = (
@@ -93,6 +95,7 @@ def explorePage(request):
     return render(request, "main/explore.html", {'allcuisine': allcuisine, 'alldrinks': alldrinks})
 
 
+@login_required(login_url = '/login')
 @csrf_protect
 @csrf_exempt
 def showMenu(request, cuisine):
@@ -125,10 +128,11 @@ def showMenu(request, cuisine):
 
         if dname != False:
             order = foodOrder.objects.create(
-            dishName = dname,
-            price = totamt,
-            quantity = dqty,
-            cooked = False
+                user = request.user,
+                dishName = dname,
+                price = totamt,
+                quantity = dqty,
+                cooked = False
         )
 
     all_dish = foodMenu.objects.all().filter(cuisine__icontains = cuisine)
@@ -136,7 +140,7 @@ def showMenu(request, cuisine):
     return render(request, "main/menu.html", {'all_dish': all_dish, 'cuisine': cuisinename})
 
 
-
+@login_required(login_url = '/login')
 def showBarMenu(request, drinktype):
 
     all_drinktype = (
@@ -162,6 +166,7 @@ def showBarMenu(request, drinktype):
     return render(request, "main/barmenu.html",{'all_drinks': all_drinks, 'drinktype': drinktype, 'drinkname': drinkname})
 
 
-
+@login_required(login_url = '/login')
 def orderPage(request):
-    return render(request, "main/order.html")
+    ordered = foodOrder.objects.all().filter(user = request.user)
+    return render(request, "main/order.html", {"ordered" : ordered})

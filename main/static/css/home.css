@@ -45,6 +45,11 @@ a {
     border-radius: 0;
   }
 
+  .hello{
+    color: white;
+    margin-left: 120px;
+  }
+
   .homePageBody .mainSection {
     max-height: calc(100vh - 125px);
   }

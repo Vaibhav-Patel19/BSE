@@ -85,6 +85,11 @@ body {
     margin-left: 20%;
   }
 
+  #errors{
+    color: white;
+    font-weight: 900;
+  }
+
   form label,
   form p {
     display: none;
