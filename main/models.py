@@ -51,19 +51,16 @@ class barMenu(models.Model):
         ("8", "White Wine"),
     )
 
-    drinktype = models.CharField(choices=all_drinktype, max_length=50, blank=True)
-    name = models.CharField(max_length=50, blank=True)
-
-    actual_price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
-    current_price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
-    old_price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
-    total_qty = models.IntegerField(null=True)
-    savings = models.DecimalField(max_digits=6, decimal_places=2, null=True)
-    low = models.DecimalField(max_digits=6, decimal_places=2, null=True)
-    high = models.DecimalField(max_digits=6, decimal_places=2, null=True)
-
-    className = models.CharField(max_length=50, blank=True)
-    recommended_drink = models.BooleanField(default=False)
+    drinktype = models.CharField(choices = all_drinktype, max_length = 50, blank = True)
+    name = models.CharField(max_length = 50, blank = True)
+    actual_price = models.DecimalField(max_digits = 6, decimal_places = 2, null = True)
+    current_price = models.DecimalField(max_digits = 6, decimal_places = 2, null = True)
+    # old_price = models.DecimalField(max_digits = 6, decimal_places = 2, null = True)
+    # total_qty = models.IntegerField(null = True)
+    # savings = models.DecimalField(max_digits = 6, decimal_places = 2, null=True)
+    low = models.DecimalField(max_digits = 6, decimal_places = 2, null = True)
+    high = models.DecimalField(max_digits = 6, decimal_places = 2, null = True)
+    recommended_drink = models.BooleanField(default = False)
 
     def __str__(self):
         return self.get_drinktype_display() + " - " + self.name
