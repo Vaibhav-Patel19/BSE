@@ -133,7 +133,7 @@ def showMenu(request, cuisine):
                 price = totamt,
                 quantity = dqty,
                 cooked = False
-        )
+            )
 
     all_dish = foodMenu.objects.all().filter(cuisine__icontains = cuisine)
 
@@ -141,6 +141,8 @@ def showMenu(request, cuisine):
 
 
 @login_required(login_url = '/login')
+@csrf_protect
+@csrf_exempt
 def showBarMenu(request, drinktype):
 
     all_drinktype = (
@@ -160,8 +162,10 @@ def showBarMenu(request, drinktype):
             drinktype = drink[0]
             break
 
-    all_drinks = barMenu.objects.all().filter(drinktype__icontains = drinktype)
+    # For Sending Order Items
+    
 
+    all_drinks = barMenu.objects.all().filter(drinktype__icontains = drinktype)
 
     return render(request, "main/barmenu.html",{'all_drinks': all_drinks, 'drinktype': drinktype, 'drinkname': drinkname})
 
@@ -170,3 +174,7 @@ def showBarMenu(request, drinktype):
 def orderPage(request):
     ordered = foodOrder.objects.all().filter(user = request.user)
     return render(request, "main/order.html", {"ordered" : ordered})
+
+
+# def dynamicPricing(dname, quantity):
+
