@@ -1,17 +1,16 @@
-addFunction = (dish) => {
+addFunction = (drink) => {
     var modal = document.getElementById("modal");
     var quantity = document.getElementById("quantity");
     var quantityList = document.getElementById("quantityList");
     var dishType = document.getElementById("dishType");
     var dishName = document.getElementById("dishName");
 
-    dishType.innerHTML = dish.dataset.type
-    dishName.innerHTML = dish.dataset.name
+    dishType.innerHTML = drink.dataset.type
+    dishName.innerHTML = drink.dataset.name
 
-    dname = dish.dataset.name
-    dtype = dish.dataset.type
-    dprice = dish.dataset.price
-    dsavings = dish.dataset.savings
+    dname = drink.dataset.name
+    dtype = drink.dataset.type
+    dprice = drink.dataset.price
 
     modal.classList.remove("remove");
     quantity.classList.remove("remove");
@@ -20,7 +19,9 @@ addFunction = (dish) => {
 
     for (let i = 1; i <= 10; i++) {
         quantityList.innerHTML += `
-            <li onclick = "confirmDrink('${dname}', '${i}', '${dprice}', '${dsavings}', '${dtype}')">${i}</li>
+            <li onclick = "confirmDrink('${dname}', '${i}', '${dprice}', '${dtype}')">
+            ${i}
+            </li>
         `
     }
 }
@@ -33,7 +34,7 @@ modalClose = () => {
     quantity.classList.add("remove");
 }
 
-confirmDrink = (dname, dqty, dprice, dsavings, dtype) => {
+confirmDrink = (dname, dqty, dprice, dtype) => {
     var quantity = document.getElementById("quantity");
     quantity.classList.add("remove");
 
@@ -45,6 +46,7 @@ confirmDrink = (dname, dqty, dprice, dsavings, dtype) => {
 
     var submitDish = document.getElementById("submitDish");
 
+    // JSON Object
     submitDish.innerHTML = `
     <button id="submitDish" onclick="yesConfirm('${dname}', '${dqty}', '${dprice}', '${dtype}')"> 
         Yes 
@@ -68,4 +70,27 @@ noConfirm = () => {
     var confirm = document.getElementById("confirm");
     confirm.classList.add("remove");
 
+}
+
+function yesConfirm(dname, dqty, dprice, dtype) {
+
+    // shorthand Ajax function
+    $.ajax({
+        type: "POST",
+        url: "{% url 'showBarMenu' 'asd' %}".replace('asd', dtype),
+        data: {
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            state: "inactive",
+            dname: dname,
+            dtype: dtype,
+            dqty: parseInt(dqty, 10),
+            dprice: parseInt(dprice, 10),
+        }, 
+        success: function () {
+            window.location.href = '/explore/'
+        }, 
+        dataType: "json"
+    });
+
+    // console.log(dname);
 }

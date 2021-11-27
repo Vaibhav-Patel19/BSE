@@ -63,11 +63,24 @@
             </td>
             </tr>
             {% endfor %}
+
+            {%if bar %}
+            {% for b in bar %}
+            <tr>
+            <td>{{b.drinkName}}</td>
+            <td>{{b.quantity}}</td>
+            <td class="eat"><span></span>Drink</td>
+            <td>
+                <img src="{% static '/images/rupee.png' %}" alt="" />{{b.price}}
+            </td>
+            </tr>
+            {% endfor %}
+            {% endif %}
         </table>
         {% else %}
         </table>
         <h4 style="color: white; font-weight: 300; text-align: center;">
-            No Dish Ordered
+            No Dish or Drink Ordered
         </h4>
         {% endif %}
 

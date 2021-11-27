@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from .models import foodMenu, barMenu, foodOrder
+from .models import foodMenu, barMenu, foodOrder, barOrder
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from django.contrib.auth.decorators import login_required
+import decimal
+
 
 # Create your views here.
 
@@ -158,23 +160,60 @@ def showBarMenu(request, drinktype):
 
     for drink in all_drinktype:
         if drink[1] == drinktype:
-            drinkname = drinktype
-            drinktype = drink[0]
+            drinkTypeName = drinktype
+            drinkType = drink[0]
             break
 
     # For Sending Order Items
-    
+    if request.method == 'POST':
+        
+        dname = request.POST.get('dname', False)
+        dtype = request.POST.get('dtype', False)
+        dqty = request.POST.get('dqty', False)
+        dprice = request.POST.get('dprice', False)
+        totamt = int(dprice) * int(dqty)
 
-    all_drinks = barMenu.objects.all().filter(drinktype__icontains = drinktype)
+        if dname != False:
+            order = barOrder.objects.create(
+                user = request.user,
+                drinkName = dname,
+                drinkType = dtype,
+                price = totamt,
+                quantity = dqty
+            )
+            print("Dyanmic")
+            x = dynamicPricing(dname, dtype, dqty)
+            print(x)
 
-    return render(request, "main/barmenu.html",{'all_drinks': all_drinks, 'drinktype': drinktype, 'drinkname': drinkname})
+    all_drinks = barMenu.objects.all().filter(drinktype__icontains = drinkType)
+
+    return render(request, "main/barmenu.html",{'all_drinks': all_drinks, 'drinkTypeName': drinkTypeName})
 
 
 @login_required(login_url = '/login')
 def orderPage(request):
     ordered = foodOrder.objects.all().filter(user = request.user)
-    return render(request, "main/order.html", {"ordered" : ordered})
+    bar = barOrder.objects.all().filter(user = request.user)
+    return render(request, "main/order.html", {"ordered" : ordered, 'bar' : bar})
 
 
-# def dynamicPricing(dname, quantity):
+def dynamicPricing(dname, dtype, quantity):
+    print("start")
+    ordered = barMenu.objects.all().filter(name = dname)
 
+    ordered[0].current_price = ordered[0].current_price + (ordered[0].actual_price * decimal.Decimal(int(quantity)/100))
+        
+    if ordered[0].high < ordered[0].current_price:
+        ordered[0].high = ordered[0].current_price
+        ordered[0].save()
+
+    all_drinks = barMenu.objects.all().filter(drinktype = dtype).exclude(name = dname)
+    for drink in all_drinks:
+        drink.current_price = drink.current_price - decimal.Decimal((ordered[0].actual_price * decimal.Decimal(quantity/100)/2))
+
+        if drink.low > drink.current_price:
+            drink.low = drink.current_price
+        print("Drink Price Updated")
+        drink.save()
+        
+    return 1

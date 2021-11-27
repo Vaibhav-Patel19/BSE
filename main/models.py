@@ -87,4 +87,25 @@ class foodOrder(models.Model):
     class Meta:
         verbose_name_plural = "Ordered Food"    
         # This class will add a title in DB.
+
+
+class barOrder(models.Model):
+    user = models.ForeignKey(User, on_delete = models.CASCADE, default = None, null = True)
+    drinkName = models.CharField(max_length = 50, blank = True)
+    drinkType = models.CharField(max_length = 50, blank = True)
+    price = models.DecimalField(max_digits = 6, decimal_places = 2, null = True)
+    quantity = models.IntegerField(null = True)
+
+    def __str__(self):
+        return str(self.user) + " - " + self.drinkName + "  |  Quantity = " + str(self.quantity)
+
+    class Meta:
+        verbose_name_plural = "Ordered Drinks"    
+        # This class will add a title in DB.
+
+
+
+
+
+
     

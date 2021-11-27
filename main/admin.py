@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import foodMenu, barMenu, foodOrder
+from .models import foodMenu, barMenu, foodOrder, barOrder
 
 # Register your models here.
 
@@ -7,3 +7,4 @@ from .models import foodMenu, barMenu, foodOrder
 admin.site.register(foodMenu)
 admin.site.register(barMenu)
 admin.site.register(foodOrder)
+admin.site.register(barOrder)
