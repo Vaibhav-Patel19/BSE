@@ -182,8 +182,10 @@ def showBarMenu(request, drinktype):
                 quantity = dqty
             )
             print("Dyanmic")
-            x = dynamicPricing(dname, dtype, dqty)
+            x = dynamicPricing(dname, dqty)
             print(x)
+            drinkType = dtype
+            drinkTypeName = dtype
 
     all_drinks = barMenu.objects.all().filter(drinktype__icontains = drinkType)
 
@@ -197,19 +199,20 @@ def orderPage(request):
     return render(request, "main/order.html", {"ordered" : ordered, 'bar' : bar})
 
 
-def dynamicPricing(dname, dtype, quantity):
-    print("start")
+def dynamicPricing(dname, quantity):
     ordered = barMenu.objects.all().filter(name = dname)
+    newPrice = ordered[0].current_price + (ordered[0].actual_price * decimal.Decimal(int(quantity)/100))
+    if ordered[0].high < newPrice:
+        newHigh = newPrice
+    else:
+        newHigh = ordered[0].high
+    barMenu.objects.all().filter(name = dname).update(current_price = newPrice, high = newHigh)
 
-    ordered[0].current_price = ordered[0].current_price + (ordered[0].actual_price * decimal.Decimal(int(quantity)/100))
-        
-    if ordered[0].high < ordered[0].current_price:
-        ordered[0].high = ordered[0].current_price
-        ordered[0].save()
-
+    dtype = ordered[0].drinktype
     all_drinks = barMenu.objects.all().filter(drinktype = dtype).exclude(name = dname)
+    
     for drink in all_drinks:
-        drink.current_price = drink.current_price - decimal.Decimal((ordered[0].actual_price * decimal.Decimal(quantity/100)/2))
+        drink.current_price = drink.current_price - decimal.Decimal((ordered[0].actual_price * decimal.Decimal(int(quantity)/100)/2))
 
         if drink.low > drink.current_price:
             drink.low = drink.current_price

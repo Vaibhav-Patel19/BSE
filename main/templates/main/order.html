@@ -48,7 +48,7 @@
             <th>Amount</th>
             </tr>
 
-            {% if ordered %}
+            {% if ordered or bar%}
             {% for order in ordered %}
             <tr>
             <td>{{order.dishName}}</td>
