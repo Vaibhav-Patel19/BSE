@@ -1,0 +1,164 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BSE | Bar Stock Exchange</title>
+
+    <link rel="stylesheet" href="{% static '/css/landing.css' %}" />
+
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">
+            <img src="{% static '/images/Landing/logo.png' %}" alt="">
+        </div>
+
+        <nav></nav>
+    </header>
+
+    <main>
+
+        <div class="title Slide">
+            <div class="header">
+                <h1>Bar Stock Exchange.</h1>
+                <p id="info">The <b> Bar Stock Exchange </b> is a dine-in ordering web application for mobile devices which helps people to order food or drinks in a club/restaurant.</p>
+
+
+                <span id="read" onclick="readmore()">read more</span> 
+            </div>
+            
+            <div id="q" class="qrcode">
+                <img src="{% static '/images/Landing/BSE_QRCode.png' %}" alt="">
+            </div>
+            
+
+        </div>
+
+        <div class="project Slide" id="project">
+            <h2>Featured <b>projects.</b></h2>
+            <p>Here are some Screenshots of our Web Application</p>
+
+            <div class="gallery">
+                <div class="big">
+                    <img src="{% static '/images/Landing/feature-1.png' %}" alt="">
+                </div>
+                <div class="small">
+                    <img src="{% static '/images/Landing/feature-2.png' %}" alt="">
+                </div>
+            </div>
+            <br><br>
+            <a href="#q">view QR code > </a>
+        </div>
+
+        {% comment %} <div class="features Slide">
+            <h2>We are offering <b>unique solutions</b> to clients worldwide.</h2>
+            <p>Here are some services we offer</p>
+
+            <div class="slideshow">
+                <div class="slides">
+                    <div class="slide">
+                        <div>
+                            <div class="photo">
+                                <img src="{% static '/images/Landing/infobox1.png' %}" alt="">
+                            </div>
+                            <h4>Front-End Solutions</h4>
+                            <p>For Front-End Solution we use HTML, CSS, JavaScript, jQuery and ajax. It offers various Styles and Design Patters which
+                            helps to build a customizable Front-End according to users need.</p>
+                        </div>
+                        <div>
+                            <div class="photo">
+                                <img src="{% static '/images/Landing/infobox2.png' %}" alt="">
+                            </div>
+                            <h4>Mobile App Solutions</h4>
+                            <p>We have made a Responsible Web - Application in our Project. You can scan the QR code to see it.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="photo">
+                                <img src="{% static '/images/Landing/infobox3.png' %}" alt="">
+                            </div>
+                            <h4>Back-End Solutions</h4>
+                            <p>For Developing Back-End of the Application we use Django as it is a customizable framework, it offers best security and easy to use for administrative staff. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> {% endcomment %}
+
+        <div class="used Slide">
+            <h2>We've had the <b>pleasure</b> to work with:</h2>
+            <p>These are the frameworks we have used in our Application. </p>
+            <div class="logos1">
+                <img src="{% static '/images/Landing/logo-41.png' %}" alt="">
+                <img src="{% static '/images/Landing/logo-31.png' %}" alt="">
+                <img src="{% static '/images/Landing/logo-21.png' %}" alt="">
+                <img src="{% static '/images/Landing/logo-51.png' %}" alt="">
+            </div>
+            <br>
+            <br>
+            <br><br><br>
+            <div class="logos2">
+                <img src="{% static '/images/Landing/logo-11.png' %}" alt="">
+                <img src="{% static '/images/Landing/logo-61.png' %}" alt="">
+                <img src="{% static '/images/Landing/logo-71.png' %}" alt="">
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+
+        <div class="desc">
+            <div class="logo">
+                <h1>MADE BY </h1>
+            </div>
+            <div class="madeby">
+                <div class="vaibhav">
+                    Vaibhav 
+                </div>
+
+                <div class="vrushit">
+                    Vrushit
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <span>© All right reserved 2021.</span>
+            <span><a href="#">The Bar Stock Exchange</a></span>
+        </div>
+
+
+        <script>
+            function readmore(){
+                
+                var information = document.getElementById("info");
+                var r = document.getElementById("read");
+                if(r.innerHTML == "read more"){
+                    r.innerHTML = "read less";
+
+                    information.innerHTML = "The Bar Stock Exchange is a dine-in ordering web application for mobile devices which helps people to order food or drinks in a club/restaurant. This software will be designed to increase restaurant customer interaction and not making them wait for the waiter to take their order. This software will be implementing a stock market theme for ordering the drinks. As in a stock market, more demand means higher prices similarly, the software should increase the price of the drink based on its demand.";
+                }else{
+                    information.innerHTML = "The Bar Stock Exchange is a dine-in ordering web application for mobile devices which helps people to order food or drinks in a club/restaurant. ";
+
+                    r.innerHTML = "read more";
+                }
+
+                
+            }
+        </script>
+
+    </footer>
+
+
+</body>
+
+</html>

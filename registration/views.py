@@ -4,7 +4,9 @@ from .forms import CreateUserForm # imoported from forms.py
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 
-# Create your views here.
+def landingPage(request):
+    return render(request, 'landing/landing.html')
+
 
 def registerPage(request):
     form = CreateUserForm()
