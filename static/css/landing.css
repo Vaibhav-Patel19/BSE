@@ -29,13 +29,13 @@ header .logo img {
 }
 
 .qrcode{
-  height: 200px;
-  width: 100px;
+  height: 150px;
+  width: 70px;
   position: relative;
   border-radius: 30px;
   display: block;
   top: -700px;
-  left: 900px;
+  left: 1100px;
 }
 
 main .Slide {

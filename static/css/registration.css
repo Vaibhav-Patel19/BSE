@@ -82,7 +82,15 @@ body {
 
   .RegistrationPage .login, .RegistrationPage .errors{
     color: #ffffff;
-    margin-left: 20%;
+    margin-left: 15%;
+  }
+
+  .RegistrationPage .google{
+    width:70%;
+    border-radius: 500px;
+    margin-left: 15%;
+    margin-top:3%;
+    
   }
 
   #errors{
