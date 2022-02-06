@@ -54,7 +54,7 @@
 
     <p class="login">Already have an account ? <a href="{% url 'loginPage' %}">Login Here</a> </p>
 
-    <a href="{% provider_login_url 'google' %}"> <img class="google" src="{% static '/images/google.png' %}" alt=""></a>
+    {% comment %} <a href="{% provider_login_url 'google' %}"> <img class="google" src="{% static '/images/google.png' %}" alt=""></a> {% endcomment %}
     
     <script>
         var form_fields = document.getElementsByTagName('input')
