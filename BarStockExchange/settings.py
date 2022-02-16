@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'allauth.account',# An app is created in Admin
     'allauth.socialaccount',# An app is created in Admin
     'allauth.socialaccount.providers.google',
+    'payments',
 ]
 
 MIDDLEWARE = [
