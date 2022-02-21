@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="{% static '/css/payments.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body class = "payments">
+    <header>
+        <img class="logo" src="{% static '/images/Logo/cover.png' %}" alt="" />
+    </header>
+
+    <div class="heading">
+        <span class="headingName">Payments</span>
+    </div>
+
+    
+
+    <i class="fa fa-check-circle"></i> 
+
+    <div class="seperator">
+
+    </div>
+
+    <h3 class = "options-heading">Choose any Option </h3>
+
+    <div class="seperator">
+
+    </div>
+
+    <form class="payment-options" action="">
+        <input type="radio" name="payment-option" id="card" placeholder="Card">
+        <label for="card"> Debit Card / Credit Card </label> <br>
+
+        <hr class="seperator-line">
+
+        <input type="radio" name="payment-option" id="net">
+        <label for="net"> Net Banking </label> <br>
+
+        <hr class="seperator-line">
+
+        <div class="upi">
+            <input type="radio" name="payment-option" id="upi">
+            <label for="upi"> UPI &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+            <img style = "height: 15px; border-radius: 15px;" src="{% static '/images/upi.png' %}" alt="" /> </label>
+        </div>
+    </form>
+
+    <div class="seperator">
+
+    </div>
+
+    <footer class = "continue">
+        <div class="price">
+            <span>
+                2,999
+            </span> <br>
+            <small> View Price Details</small>
+        </div>
+
+        <button type="submit">
+            CONTINUE
+        </button>
+    </footer>
+
+</body>
+</html>

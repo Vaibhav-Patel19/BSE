@@ -27,6 +27,7 @@ root {
   .orderPage .orderGrid table th {
     text-align: center;
     color: var(--orange);
+    font-weight: normal;
   }
 
   .orderPage .orderGrid table td {

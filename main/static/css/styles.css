@@ -60,6 +60,7 @@ header {
 }
 
 span.headingName {
+  margin-left: 20px;
   height: 25px;
   display: inline-block;
   border-radius: 10px;
