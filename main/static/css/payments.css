@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 
 root {
     --orange: #ef6848;
@@ -20,6 +21,36 @@ body {
         box-sizing: border-box;
         background-color: var(--black);
         font-family: "Raleway", sans-serif;
+    }
+
+    .status-1 {
+        overflow: hidden;
+        text-align: center;
+        display:inline;
+        margin-left: 50px;
+        font-family: 'Roboto', sans-serif;
+      }
+
+      .status-2 {
+        font-family: 'Roboto', sans-serif;
+      }
+      
+      .status-1:after {
+        background-color: white;
+        content: "";
+        display: inline-block;
+        height: 1px;
+        position: relative;
+        vertical-align: middle;
+        width: 30%;
+      }
+
+      .payments .status-2 > i {
+          color: var(--white);
+      }
+
+    .payments .status-1 > i {
+        color: var(--white);
     }
 
     .payments .seperator {
@@ -47,8 +78,7 @@ body {
         justify-content: space-around;
         position: fixed;
         width: 100%;
-        bottom: 0;
-        padding-bottom: 15px;
+        bottom: 10%;
     }
 
     .payments .continue >button {
