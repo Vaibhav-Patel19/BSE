@@ -29,6 +29,10 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+a{
+  text-decoration: none;
+}
+
 .logo {
   margin: 20px 0 !important;
   width: 60%;

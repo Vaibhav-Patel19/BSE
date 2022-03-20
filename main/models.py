@@ -103,6 +103,16 @@ class barOrder(models.Model):
         verbose_name_plural = "Ordered Drinks"    
         # This class will add a title in DB.
 
+# class Order(models.Model):
+#     user = models.ForeignKey(User, on_delete = models.CASCADE, default = None, null = True)
+#     orderId = models.IntegerField()
+#     quantity = models.IntegerField(null = True)
+#     price = models.DecimalField(max_digits = 6, decimal_places = 2, null = True)
+
+
+
+
+
 
 
 

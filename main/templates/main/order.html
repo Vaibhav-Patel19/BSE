@@ -20,12 +20,12 @@
     <title>Bar Stock Exchange | Orders</title>
 </head>
 
-<body class="homePageBody">
+<body class="orderPageBody">
     <header>
         <img class="logo" src="{% static '/images/Logo/cover.png' %}" alt="" />
     </header>
 
-    <main class="orderPage mainSection active" id="orderPage">
+    <main class="orderPage" id="orderPage">
         <div class="heading">
             <span class="headingName">Order</span>
         </div>
@@ -82,6 +82,10 @@
         </div>
 
     </main>
+
+    <div class="pay-container">
+        <a class="pay-btn" href=" {% url 'paymentsGateway' %} ">PAY</a>
+    </div>
 
     <footer>
 		<div class="footerGrid">
