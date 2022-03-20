@@ -62,6 +62,9 @@ SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/home'
 
+RAZOR_KEY_ID = "rzp_test_ktKHbW267TNArC"
+RAZOR_KEY_SECRET = "OBcqpAYQbFtXjP7TJ2QQfvNT"
+
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'SCOPE': [
