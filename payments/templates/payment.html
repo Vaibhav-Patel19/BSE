@@ -82,7 +82,19 @@
 				alt=""
 			/>
 			</label>
-			<!-- https://www.mumbailive.com/images/news/barstockchembur3_1514201297341.jpg?fm=webp&w=770 -->
+			
+		</div>
+		<br> <br> <br> <br>
+
+
+		<div class="continue">
+			<div class="price">
+				<span> {{ display }} </span> <br />
+				<a href="{% url 'orderPage' %} ">
+				<small> View Price Details</small>
+				</a>
+			</div>
+			
 		</div>
 
 		<script
@@ -101,18 +113,7 @@
 		></script>
 		<input type="hidden" custom="Hidden Element" name="hidden" />
 
-		<div class="seperator"></div>
-
-		<footer class="continue">
-		<div class="price">
-			<span> {{ display }} </span> <br />
-			<a href="{% url 'orderPage' %} ">
-			<small> View Price Details</small>
-			</a>
-		</div>
-
-		<button type="submit">CONTINUE</button>
-		</footer>
+		<!-- <div class="seperator"></div> -->
 	</form>
   </body>
 </html>

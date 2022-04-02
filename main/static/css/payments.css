@@ -91,18 +91,20 @@ body {
     }
 
     .payments .continue {
-        display: flex;
+        /* display: flex; */
         align-items: center;
-        justify-content: space-around;
+        /* justify-content: space-around; */
         position: fixed;
         width: 100%;
-        bottom: 10%;
+        bottom: 19%;
+        left: 65%;
     }
 
+    /*
     .payments .continue >button {
         width:170px;
         height: 35px;
-    }
+    } */
 
     .payments .continue .price {
         color: var(--white);
