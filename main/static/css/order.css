@@ -126,18 +126,18 @@ root {
 		position: absolute;
 		/* margin-bottom: 50px;
 		margin-left: 250px; */
-		left: 66%;
-		bottom: 10%;
+		left: 58%;
+		bottom: 13%;
 	}
 
-	.pay-btn{
+	.pay-container .pay-btn{
 		
 		text-decoration: none;
 		background-color: white;
 		color: black;
-		padding:5px 35px;
+		padding:5px 25px;
 		text-align: center;
-		width:200px;
+		width:150px;
 		height: 35px;
 		border-radius:3px;
 	}
