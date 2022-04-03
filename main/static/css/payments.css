@@ -74,6 +74,7 @@ body {
     }
 
     .payments .options-heading {
+        
         color: var(--white);
         letter-spacing: 1px;
         font-size: 1.1em;
@@ -99,12 +100,6 @@ body {
         bottom: 63%;
         left: 65%;
     }
-
-    /*
-    .payments .continue >button {
-        width:170px;
-        height: 35px;
-    } */
 
     .payments .continue .price {
         color: var(--white);

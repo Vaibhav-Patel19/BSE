@@ -41,80 +41,42 @@
 		<div class="seperator"></div>
 
 		<form
-		class="payment-options"
-		action="success"
-		method="POST"
+			class="payment-options"
+			action="success"
+			method="POST"
 		>
-		{% csrf_token %}
-		
-		<!-- <div class="mobile-number">
-			<p>Mobile Number :</p>
-			<input
-			type="number"
-			name="mobile"
-			id="mobile"
-			placeholder="Mobile Number"
-			/>
-		</div>
+			{% csrf_token %}
 
-		<hr class="seperator-line" /> -->
+			<h3 class="options-heading">Your Order Total is : </h3>
 
-		<h3 class="options-heading">Your Order Total is : </h3>
-<!-- 
-		<div class="seperator"></div>
-
-		<input type="radio" name="payment-option" id="card" placeholder="Card" />
-		<label for="card"> Debit Card / Credit Card </label> <br />
-
-		<hr class="seperator-line" />
-
-		<input type="radio" name="payment-option" id="net" />
-		<label for="net"> Net Banking </label> <br />
-
-		<hr class="seperator-line" />
-
-		<div class="upi">
-			<input type="radio" name="payment-option" id="upi" />
-			<label for="upi">
-			UPI &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
-			<img
-				style="height: 15px; border-radius: 15px"
-				src="{% static '/images/upi.png' %}"
-				alt=""
-			/>
-			</label>
-			
-		</div>
-		<br> <br> <br> <br> -->
-
-
-		<div class="continue">
-			<div class="price">
-				<span> {{ display }} </span> <br />
-				<a href="{% url 'orderPage' %} ">
-				<small> View Price Details</small>
-				</a>
+			<div class="continue">
+				<div class="price">
+					<span> {{ display }} </span> <br />
+					<a href="{% url 'orderPage' %} ">
+					<small> View Price Details</small>
+					</a>
+				</div>
+				
 			</div>
-			
-		</div>
 
-		<script
-			src="https://checkout.razorpay.com/v1/checkout.js"
-			data-key="rzp_test_ktKHbW267TNArC"
-			data-amount="{{totalAmount}}00"
-			data-currency="INR"
-			data-order_id="{{payment.id}}"
-			data-buttontext="PAY"
-			data-name="Bar Stock Exchange"
-			data-description="Payment Portal"
-			data-image="{% static '/images/Logo/cover.png' %}"
-			data-prefill.name="{{ user }}"
-			data-prefill.email="{{ email }}"
-			data-theme.color="#0077b6"
-		></script>
-		<input type="hidden" custom="Hidden Element" name="hidden" />
+			<br> <br>
 
-		<!-- <div class="seperator"></div> -->
-	</form>
-  </body>
+			<script
+				src="https://checkout.razorpay.com/v1/checkout.js"
+				data-key="rzp_test_ktKHbW267TNArC"
+				data-amount="{{totalAmount}}00"
+				data-currency="INR"
+				data-order_id="{{payment.id}}"
+				data-buttontext="PAY"
+				data-name="Bar Stock Exchange"
+				data-description="Payment Portal"
+				data-image="{% static '/images/Logo/cover.png' %}"
+				data-prefill.name="{{ user }}"
+				data-prefill.email="{{ email }}"
+				data-theme.color="#0077b6"
+			></script>
+			<input type="hidden" custom="Hidden Element" name="hidden" />
+
+		</form>
+	</body>
 </html>
