@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
 import razorpay
 from main.models import barOrder, foodOrder
 from .models import Payment
+from django.contrib.auth.decorators import login_required
 
 def PaymentGateway(request):
 
@@ -25,10 +26,10 @@ def PaymentGateway(request):
         payment = client.order.create(data = DATA)
 
     for item in foodItem:
-        totalAmount += item.price * item.quantity
+        totalAmount += item.price
 
     for item in barItem:
-        totalAmount += item.price * item.quantity
+        totalAmount += item.price
 
     if(Payment.objects.all().filter(user = request.user).count() == 1):
         pay = Payment.objects.update(user=request.user, total = totalAmount, bill_paid = False)
@@ -41,10 +42,14 @@ def PaymentGateway(request):
     return render(request, "payment.html", {'display_amount' : display_amount, 'totalAmount': totalAmount, 'user': user, 'email': email })
 
 
+@login_required
 @csrf_exempt
 def success(request):
 
-    p = Payment.objects.all().filter(user = request.user).update(bill_paid = True)
-    p.save()
+    Payment.objects.all().filter(user = request.user).update(bill_paid = True)
+
+    foodOrder.objects.all().filter(user = request.user).delete()
+
+    barOrder.objects.all().filter(user = request.user).delete()
 
     return render(request, "success.html")
