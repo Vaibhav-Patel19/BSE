@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
 
 class foodMenu(models.Model):
     foodtype = (
@@ -102,13 +101,6 @@ class barOrder(models.Model):
     class Meta:
         verbose_name_plural = "Ordered Drinks"    
         # This class will add a title in DB.
-
-# class Order(models.Model):
-#     user = models.ForeignKey(User, on_delete = models.CASCADE, default = None, null = True)
-#     orderId = models.IntegerField()
-#     quantity = models.IntegerField(null = True)
-#     price = models.DecimalField(max_digits = 6, decimal_places = 2, null = True)
-
 
 
 

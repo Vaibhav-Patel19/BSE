@@ -33,11 +33,6 @@ root {
 	.orderPage .orderGrid table td {
 		text-align: center;
 		color: white;
-		/* max-width: 150px;
-		max-height: 40px;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap; */
 	}
 
 	.orderPage .orderGrid table td i {
@@ -124,8 +119,7 @@ root {
 
 	.pay-container {
 		position: absolute;
-		/* margin-bottom: 50px;
-		margin-left: 250px; */
+		
 		left: 58%;
 		bottom: 13%;
 	}

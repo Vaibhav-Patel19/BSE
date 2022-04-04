@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+root {
+    --orange: #ef6848;
+    --black: #181818;
+    --darkGray: #313131;
+    --white: #ffffff;
+    --lightOrange: #ff9c51;
+    --yellowOrange: #ffb650;
+}
+
+body {
+    display: none;
+}
+
+@media only screen and (max-width: 500px) {
+    .payments {
+        display: block;
+        margin: 0;
+        box-sizing: border-box;
+        background-color: var(--black);
+        font-family: "Raleway", sans-serif;
+    }
+
+    .status-1 {
+        overflow: hidden;
+        text-align: center;
+        display:inline;
+        margin-left: 50px;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .status-2 {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .status-1:after {
+        background-color: white;
+        content: "";
+        display: inline-block;
+        height: 1px;
+        position: relative;
+        vertical-align: middle;
+        width: 30%;
+    }
+
+    .payments .status-2 > i {
+        color: var(--white);
+    }
+
+    .payments .status-1 > i {
+        color: var(--white);
+    }
+
+    .payments .mobile-number {
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: space-between;
+    }
+
+    .payments .mobile-number > input {
+        border-radius:5px;
+        height:22px;
+    }
+
+    .payments .seperator {
+        height: 7px;
+        border: none;
+        background-color: #585757;
+        margin: 25px;
+    }
+
+    .payments .options-heading {
+        
+        color: var(--white);
+        letter-spacing: 1px;
+        font-size: 1.1em;
+    }
+
+    .payments .payment-options {
+        color: var(--white);
+        padding: 15px;
+        margin: 15px;
+    }
+
+    .payments .payment-options .seperator {
+        margin: 0px;
+        margin-bottom: 20px;
+    }
+
+    .payments .continue {
+        /* display: flex; */
+        align-items: center;
+        /* justify-content: space-around; */
+        position: fixed;
+        width: 100%;
+        bottom: 63%;
+        left: 65%;
+    }
+
+    .payments .continue .price {
+        color: var(--white);
+    }
+
+    .payments .continue .price small {
+        color: var(--orange);
+        font-weight: bold;
+    }
+
+    .payments .payment-options .upi {
+        display: flex;
+        justify-content: flex-start;
+        justify-content: space-around;
+    }
+
+    .seperator-line {
+        opacity: 0.3;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}

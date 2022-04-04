@@ -1,0 +1,405 @@
+/*  This CSS Is For Elements Only Specific To 
+    Home Page (Only unique Part) */
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+
+:root {
+  --orange: #ef6848;
+  --black: #181818;
+  --darkGray: #313131;
+  --white: #ffffff;
+  --lightOrange: #ff9c51;
+  --yellowOrange: #ffb650;
+  --placeholder: #8f8f8f;
+
+  /* To Use Variables Do This : var(--white) */
+}
+
+body {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+@keyframes animate {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  html {
+    overflow: hidden;
+  }
+  body {
+    display: block;
+    overflow: hidden;
+  }
+
+  .logo {
+    margin-bottom: 1em;
+    border-radius: 0;
+  }
+
+  .hello{
+    color: white;
+    margin-left: 120px;
+  }
+
+  .homePageBody .mainSection {
+    max-height: calc(100vh - 125px);
+  }
+
+  .homePageBody .mainSection.active {
+    display: block;
+  }
+
+  /* .homePage .search {
+    margin: 0 20px;
+    margin-bottom: 15px;
+  } */
+
+  .icon h4 {
+    color: white;
+    font-family: "Lato", sans-serif;
+    text-align: center;
+    line-height: 30px;
+    margin: 0;
+  }
+/* 
+  .homePage .search .form {
+    height: 2.5em;
+    line-height: 2.5em;
+    display: grid;
+    grid-template-columns: 90% 10%;
+  }
+
+  .homePage .search input {
+    outline: none;
+    border: none;
+    width: 95%;
+    height: 2.7em;
+    line-height: 2.6em;
+    padding-left: 15px;
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    border-radius: 10px;
+    border: 2px solid #3a3a3a;
+    background-color: transparent;
+    box-shadow: -5px -5px 15px rgba(0, 0, 0, 0.5),
+      5px 5px 15px rgba(82, 82, 82, 0.12),
+      inset -5px -5px 15px rgba(0, 0, 0, 0.5),
+      inset 5px 5px 15px rgba(92, 92, 92, 0.12);
+  }
+
+  .homePage .search input:active,
+  .homePage .search input:focus {
+    box-shadow: 2px 2px 10px #030303c4;
+  }
+
+  .homePage .search input::placeholder {
+    color: var(--placeholder);
+  }
+
+  .homePage .search button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    width: 95%;
+    height: 2.5em;
+    line-height: 2.5em;
+    padding: 6px 0;
+    float: left;
+    display: flex;
+    margin-left: -0.5em;
+    border-radius: 5px;
+    justify-content: center;
+    box-shadow: -3px -3px 10px #fc48205e, 2px 2px 10px #fc48205e;
+    background-image: linear-gradient(45deg, #fc4820, #ef6848);
+  }
+
+  .homePage .search button img {
+    height: 100%;
+  } */
+
+  .homePage .topHorizontal {
+    /*FireFox*/
+    scrollbar-width: none;
+    /*IE10+*/
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  .homePage .topHorizontal::-webkit-scrollbar {
+    /*Chrome, Safari, Edge*/
+    display: none;
+  }
+
+  .homePage .topHorizontal {
+    display: block;
+    overflow: auto;
+    white-space: nowrap;
+    margin-top: 0;
+  }
+
+  .homePage .topHorizontal ul {
+    padding: 0 20px;
+  }
+
+  .homePage .topHorizontal ul li {
+    display: inline-block;
+    padding: 0 20px;
+    font-weight: 500;
+    color: var(--placeholder);
+  }
+
+  .homePage .topHorizontal ul li.active {
+    color: var(--orange);
+    position: relative;
+  }
+
+  .homePage .topHorizontal ul li.active::after {
+    content: "";
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    border-radius: 50%;
+    bottom: -10px;
+    left: 48%;
+    background-color: var(--orange);
+  }
+  
+
+  .homePage .foodHorizontal {
+    overflow: auto;
+    white-space: nowrap;
+    margin-top: 20px;
+  }
+
+  .homePage .foodHorizontal .pannel {
+    display: none;
+    padding-left: 0;
+  }
+
+  .homePage .foodHorizontal {
+    /*FireFox*/
+    scrollbar-width: none;
+    /*IE10+*/
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  .homePage .foodHorizontal::-webkit-scrollbar {
+    /*Chrome, Safari, Edge*/
+    display: none;
+  }
+
+  .homePage .foodHorizontal ul {
+    padding: 0 20px;
+  }
+
+  .homePage .foodHorizontal ul li {
+    display: inline-block;
+    overflow: hidden;
+    width: 270px;
+    height: 370px;
+    margin: 20px 15px;
+    border-radius: 25px;
+    box-shadow: 5px 5px 15px black;
+  }
+
+  .homePage .foodHorizontal ul li.active {
+    width: 300px;
+    height: 410px;
+    margin: 0 10px;
+  }
+
+  .homePage .foodHorizontal ul li .fooditem {
+    height: 440px;
+    overflow: hidden;
+  }
+
+  .homePage .foodHorizontal ul li .fooditem .foodPhoto {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .homePage .foodHorizontal ul li .fooditem .foodPhoto img {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  footer {
+    position: fixed;
+    background-color: #2b2b2b;
+    display: block;
+    width: 100%;
+    height: 65px;
+    overflow: hidden;
+    bottom: 0;
+    border-radius: 25px 25px 0px 0px;
+  }
+
+  footer .footerGrid {
+    display: flex;
+    margin: 0 10px;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 18px;
+    height: 25px;
+  }
+
+  footer .footerGrid li {
+    width: 50px;
+    height: 20px;
+    padding: 8px;
+    list-style: none;
+  }
+
+  footer .footerGrid li img {
+    padding: 0 15px;
+    height: 20px;
+    display: inline-block;
+  }
+
+  footer .footerGrid li img:nth-child(2) {
+    display: none;
+  }
+
+  footer .footerGrid li.active img:nth-child(2) {
+    display: inline-block;
+  }
+
+  footer .footerGrid li.active img:nth-child(1) {
+    display: none;
+  }
+
+  footer .footerGrid li span {
+    display: none;
+  }
+
+  footer .footerGrid li.active {
+    background-color: #2b2b2b;
+    border-radius: 25px;
+    width: 100px;
+    position: relative;
+    /* box-shadow: 2px 2px 4px #030303c4; */
+    border: 2px solid #181818;
+    border-style: ridge;
+    box-shadow: -7px -7px 15px rgba(70, 70, 70, 0.575), 5px 5px 15px #030303c4;
+    box-shadow: -7px -7px 15px rgba(46, 46, 46, 0.575), 5px 5px 15px #030303c4;
+  }
+
+  footer .footerGrid li.active img {
+    padding: 0 5px;
+  }
+
+  footer .footerGrid li.active span {
+    display: inline-block;
+    position: absolute;
+    color: var(--orange);
+    top: 9px;
+    left: 45px;
+  }
+
+  .foodHorizontal .like {
+    width: 70px;
+    height: 70px;
+  }
+
+  .foodHorizontal .fooditem {
+    position: relative;
+  }
+
+  .foodHorizontal .fooditem .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .foodHorizontal .active .fooditem .content section {
+    position: absolute;
+    top: 76%;
+    height: 18%;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .foodHorizontal .fooditem .content section {
+    position: absolute;
+    top: 65%;
+    height: 25%;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .foodHorizontal .fooditem .content section .bg-item {
+    position: absolute;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    width: 100%;
+    height: 100%;
+  }
+
+  .foodHorizontal .fooditem .content section .bg-text {
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/opacity/see-through */
+    color: white;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .foodHorizontal .fooditem .content section .bg-text .stars {
+    color: var(--orange);
+    margin-top: 15px;
+    margin-left: 20px;
+  }
+
+  .foodHorizontal .fooditem .content section .bg-text h2 {
+    font-size: 1rem;
+    margin-left: 20px;
+    margin-top: 22px;
+    font-weight: 600;
+  }
+
+  .foodHorizontal .fooditem .content section .bg-text h4 {
+    margin-left: 20px;
+    margin-top: -7px;
+    font-weight: 400;
+    font-size: 0.9rem;
+  }
+  .foodHorizontal .fooditem .content .like i {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 300;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .foodHorizontal .fooditem .content .icon {
+    position: absolute;
+    width: 70px;
+    height: 30px;
+    z-index: 5;
+    top: 272px;
+    left: 180px;
+    border-radius: 10px;
+    background-color: var(--orange);
+  }
+
+  .foodHorizontal .active .fooditem .content .icon {
+    position: absolute;
+    top: 310px;
+    left: 220px;
+  }
+}

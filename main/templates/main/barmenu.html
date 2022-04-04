@@ -1,150 +1,131 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BarMenu | Bar Stock Exchange</title>
 
     <link rel="stylesheet" href="{% static '/css/styles.css' %}" />
     <link rel="stylesheet" href="{% static '/css/home.css' %}" />
-    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/yourcode.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="{% static '/css/menu.css' %}" />
+  </head>
 
-    <style>
-        li.openedFooter {
-            width: 135px !important;
-            border-radius: 0 !important;
-            box-shadow: none !important;
-            border: none !important;
-        }
-
-        li.openedFooter span {
-            color: wheat !important;
-            font-weight: 600;
-            text-align: right;
-        }
-    </style>
-</head>
-
-<body class="MenuPage" id="body" data-drink="{{drinkTypeName}}">
-
+  <body class="MenuPage" id="body" data-drink="{{drinkTypeName}}">
     <header>
-        <img class="logo" src="{% static '/images/Logo/cover.png' %}" alt="" />
+      <img class="logo" src="{% static '/images/Logo/cover.png' %}" alt="" />
     </header>
 
     <div class="heading">
-        <span class="headingName">{{drinkTypeName}}</span>
-        <span class="headingName"> <a href="{% url 'explorePage' %}">Back</a> </span>
+      <span class="headingName">{{drinkTypeName}}</span>
+      <span class="headingName">
+        <a href="{% url 'explorePage' %}">Back</a>
+      </span>
     </div>
 
     <div class="modal remove" id="modal">
-        <div class="quantityModal remove" id="quantity">
-            <div class="header">
-                <button id="backBtn" onclick="modalClose()">Back</button>
-                <span id="dishType"> 
-                    
-                </span>
-            </div>
-
-            <div class="dish">
-                <h2 id="dishName"></h2>
-                <h4>Select Quantity</h4>
-                <ul id="quantityList">
-
-                </ul>
-            </div>
+      <div class="quantityModal remove" id="quantity">
+        <div class="header">
+          <button id="backBtn" onclick="modalClose()">Back</button>
+          <span id="dishType"> </span>
         </div>
 
-        <div class="confirmModal remove" id="confirm">
-            <h2 id="dishName2"></h2>
-            <h4 id="quantity1"></h4>
-            <h4>Are you Sure ?</h4>
-            <form method = "POST" action = "">
-                {% csrf_token %}
-                <div class="flexbox" id="submitDish">
-                    <!-- Yes and No Confirm Dialog Box -->
-                </div>
-            </form>
-
+        <div class="dish">
+          <h2 id="dishName"></h2>
+          <h4>Select Quantity</h4>
+          <ul id="quantityList"></ul>
         </div>
-        
+      </div>
+
+      <div class="confirmModal remove" id="confirm">
+        <h2 id="dishName2"></h2>
+        <h4 id="quantity1"></h4>
+        <h4>Are you Sure ?</h4>
+        <form method="POST" action="">
+          {% csrf_token %}
+          <div class="flexbox" id="submitDish">
+            <!-- Yes and No Confirm Dialog Box -->
+          </div>
+        </form>
+      </div>
     </div>
 
     <div class="itemList" id="drinkList">
+      {% for drink in all_drinks %}
 
-        {% for drink in all_drinks %}
-
-        <div class="item">
-            <div class="left">
-                <span>{{ drink.name }} <br> <span class="price"> ₹
-                        {{ drink.current_price }}</span> </span>
-            </div>
-
-            <div class="right">
-                <div class="right-2">
-                    <button class="addbutton" 
-                        data-name="{{ drink.name }}" 
-                        data-price="{{ drink.current_price }}" 
-                        data-savings="{{ drink.savings }}"
-                        data-type="{{drinkTypeName}}" 
-                        onclick="addFunction(this)">
-                        ADD 
-                    </button>
-                </div>
-            </div>
+      <div class="item">
+        <div class="left">
+          <span
+            >{{ drink.name }} <br />
+            <span class="price"> ₹ {{ drink.current_price }}</span>
+          </span>
         </div>
 
-        {% endfor %}
+        <div class="right">
+          <div class="right-2">
+            <button
+              class="addbutton"
+              data-name="{{ drink.name }}"
+              data-price="{{ drink.current_price }}"
+              data-savings="{{ drink.savings }}"
+              data-type="{{drinkTypeName}}"
+              onclick="addFunction(this)"
+            >
+              ADD
+            </button>
+          </div>
+        </div>
+      </div>
 
+      {% endfor %}
     </div>
 
     <footer>
-		<div class="footerGrid">
-			<a href="{% url 'homePage' %}">
-				<li id="homeSlide" class="footerTab " >
-					<img src="{% static '/images/home.png' %}" alt="" />
-					<img src="{% static '/images/home1.png' %}" alt="" />
-					<span>Home</span>
-				</li>
-			</a>
-	
-			<a href="{% url 'explorePage' %}">
-				<li id="exploreSlide" class="footerTab" >
-					<img src="{% static '/images/explore.png' %}" alt="" />
-					<img src="{% static '/images/explore1.png' %}" alt="" />
-					<span>Explore</span>
-				</li>
-			</a>
-	
-			<a href="{% url 'orderPage' %}">
-				<li id="orderSlide" class="footerTab" >
-					<img src="{% static '/images/ordered.png' %}" alt="" />
-					<img src="{% static '/images/ordered1.png' %}" alt="" />
-					<span>Order</span>
-				</li>
-			</a>
+      <div class="footerGrid">
+        <a href="{% url 'homePage' %}">
+          <li id="homeSlide" class="footerTab">
+            <img src="{% static '/images/home.png' %}" alt="" />
+            <img src="{% static '/images/home1.png' %}" alt="" />
+            <span>Home</span>
+          </li>
+        </a>
 
-            <a href="{% url 'logoutUser' %}">
-				<li id="orderSlide" class="footerTab" >
-					<i style="color:white" class="fas fa-sign-out-alt"></i>
-					<span>Logout</span>
-				</li>
-			</a>
+        <a href="{% url 'explorePage' %}">
+          <li id="exploreSlide" class="footerTab">
+            <img src="{% static '/images/explore.png' %}" alt="" />
+            <img src="{% static '/images/explore1.png' %}" alt="" />
+            <span>Explore</span>
+          </li>
+        </a>
 
-		</div>
+        <a href="{% url 'orderPage' %}">
+          <li id="orderSlide" class="footerTab">
+            <img src="{% static '/images/ordered.png' %}" alt="" />
+            <img src="{% static '/images/ordered1.png' %}" alt="" />
+            <span>Order</span>
+          </li>
+        </a>
 
-		
-
-	</footer>
+        <a href="{% url 'logoutUser' %}">
+          <li id="orderSlide" class="footerTab">
+            <i style="color: white" class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </li>
+        </a>
+      </div>
+    </footer>
 
     <script src="{% static 'js/barmenu.js' %}"></script>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-
-</body>
-
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
