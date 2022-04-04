@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/success.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Success</title>
+  </head>
+  <body class="success">
+    <header>
+      <img class="logo" src="{% static '/images/Logo/cover.png' %}" alt="" />
+    </header>
+
+    <div class="heading">
+      <span class="headingName">You Payment is Successfull</span>
+    </div>
+
+    <a class="home-link" href="{% url 'homePage' %}"> Go Back to Menu </a>
+  </body>
+</html>

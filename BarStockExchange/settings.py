@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'allauth.account',# An app is created in Admin
     'allauth.socialaccount',# An app is created in Admin
     'allauth.socialaccount.providers.google',
+    'payments',
 ]
 
 MIDDLEWARE = [
@@ -60,6 +61,9 @@ MIDDLEWARE = [
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/home'
+
+RAZOR_KEY_ID = "rzp_test_ktKHbW267TNArC"
+RAZOR_KEY_SECRET = "OBcqpAYQbFtXjP7TJ2QQfvNT"
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {

@@ -29,6 +29,10 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+a{
+  text-decoration: none;
+}
+
 .logo {
   margin: 20px 0 !important;
   width: 60%;
@@ -60,6 +64,7 @@ header {
 }
 
 span.headingName {
+  margin-left: 20px;
   height: 25px;
   display: inline-block;
   border-radius: 10px;

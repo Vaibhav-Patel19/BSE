@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Payment</title>
+		<link rel="stylesheet" href="{% static '/css/payments.css' %}" />
+		<link rel="stylesheet" href="{% static '/css/styles.css' %}" />
+		<link
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+		/>
+	</head>
+	<body class="payments">
+		<header>
+		<img class="logo" src="{% static '/images/Logo/cover.png' %}" alt="" />
+		</header>
+
+		<div class="heading">
+		<span class="headingName">Payments</span>
+		</div>
+
+		<br />
+		<br />
+		<span class="status-1">
+			<i class="fa fa-check-circle">
+				<br />
+				Order Summary
+			</i>
+		</span>
+
+		<span class="status-2">
+		<i class="fa fa-check-circle">
+			<br />
+			Payment
+		</i>
+		</span>
+
+		<div class="seperator"></div>
+
+		<form
+			class="payment-options"
+			action="success"
+			method="POST"
+		>
+			{% csrf_token %}
+
+			<h3 class="options-heading">Your Order Total is : </h3>
+
+			<div class="continue">
+				<div class="price">
+					<span> {{ display_amount }} </span> <br />
+					<a href="{% url 'orderPage' %} ">
+					<small> View Price Details</small>
+					</a>
+				</div>
+				
+			</div>
+
+			<br> <br>
+
+			<script
+				src="https://checkout.razorpay.com/v1/checkout.js"
+				data-key="rzp_test_ktKHbW267TNArC"
+				data-amount="{{totalAmount}}00"
+				data-currency="INR"
+				data-order_id="{{payment.id}}"
+				data-buttontext="PAY"
+				data-name="Bar Stock Exchange"
+				data-description="Payment Portal"
+				data-image="{% static '/images/Logo/cover.png' %}"
+				data-prefill.name="{{ user }}"
+				data-prefill.email="{{ email }}"
+				data-theme.color="#0077b6"
+			></script>
+			<input type="hidden" custom="Hidden Element" name="hidden" />
+
+		</form>
+	</body>
+</html>

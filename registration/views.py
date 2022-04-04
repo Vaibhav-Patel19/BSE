@@ -3,6 +3,8 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm # imoported from forms.py
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from main.models import foodOrder, barOrder
+from payments.models import Payment
 
 def landingPage(request):
     return render(request, 'landing/landing.html')
@@ -42,5 +44,12 @@ def loginPage(request):
 
 
 def logoutUser(request):
+
+    Payment.objects.all().filter(user = request.user).update(bill_paid = True)
+
+    foodOrder.objects.all().filter(user = request.user).delete()
+
+    barOrder.objects.all().filter(user = request.user).delete()
+
     logout(request)
     return redirect('/login')
