@@ -65,6 +65,7 @@ LOGIN_REDIRECT_URL = '/home'
 RAZOR_KEY_ID = "rzp_test_ktKHbW267TNArC"
 RAZOR_KEY_SECRET = "OBcqpAYQbFtXjP7TJ2QQfvNT"
 
+# For Google Sign Up
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'SCOPE': [

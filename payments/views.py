@@ -25,6 +25,7 @@ def PaymentGateway(request):
         }
         payment = client.order.create(data = DATA)
 
+    # Updating the Total Bill
     for item in foodItem:
         totalAmount += item.price
 
@@ -36,6 +37,8 @@ def PaymentGateway(request):
     else:
         pay = Payment.objects.create(user = request.user, total = totalAmount, bill_paid = False)
 
+    # Two amounts because in RajorPay, units are taken in "Paisa", but for displaying 
+    # in the App, we are using Ruppee.
     display_amount = totalAmount
     totalAmount = totalAmount * 100
 

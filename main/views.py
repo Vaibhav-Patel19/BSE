@@ -5,12 +5,11 @@ from django.contrib.auth.decorators import login_required
 import decimal
 
 
-# Create your views here.
 
 @login_required(login_url = '/login')
 def homePage(request):
 
-    all_cuisine = (
+    all_cuisines = (
         ("1", "Soup"),
         ("2", "Salad"),
         ("3", "Appetizers"),
@@ -22,7 +21,7 @@ def homePage(request):
         ("9", "Fondue"),
         ("10", "Desserts"),
     )
-    all_drinktype = (
+    all_drinktypes = (
         ("1", "Beer"),
         ("2", "Cocktail"),
         ("3", "Gin"),
@@ -34,24 +33,25 @@ def homePage(request):
     )
 
     #Newest Tab
-    newest = foodMenu.objects.all().filter(newest=True)
-    for i in newest:
-        number = int(i.cuisine) - 1
-        i.cuisine = all_cuisine[number][1]
+    newest = foodMenu.objects.all().filter(newest = True)
+    for new in newest:
+        number = int(new.cuisine) - 1
+        new.cuisine = all_cuisines[number][1] # Since i.cuisine has a Integer value
 
-    #recommended tab
-    recommended = foodMenu.objects.all().filter(recommended=True)
-    for i in recommended:
-        number = int(i.cuisine)-1
-        i.cuisine = all_cuisine[number][1]
+    #Food recommended tab
+    recommended = foodMenu.objects.all().filter(recommended = True)
+    for r_food in recommended:
+        number = int(r_food.cuisine) - 1
+        r_food.cuisine = all_cuisines[number][1]
     
-    #recommended_Drink  
+    #Recommended_Drink  
     recommended_drink = barMenu.objects.all().filter(recommended_drink=True)
-    for i in recommended_drink:
-        number = int(i.drinktype) - 1
-        i.drinktype = all_drinktype[number][1]
+    for r_drink in recommended_drink:
+        number = int(r_drink.drinktype) - 1
+        r_drink.drinktype = all_drinktypes[number][1]
 
     return render(request, "main/home.html", {"newest": newest, "recommended": recommended, "recommended_drink": recommended_drink})
+
 
 
 @login_required(login_url = '/login')
@@ -88,13 +88,14 @@ def explorePage(request):
         i['cuisine'] = all_cuisine[number][1]
 
 
-    #for displaying Drinktypes in Explore Page
+    #for displaying different Drinktypes in Explore Page
     alldrinks = barMenu.objects.order_by('drinktype').values('drinktype').distinct()
     for i in alldrinks:
         number = int(i['drinktype']) - 1
         i['drinktype'] = all_drinktype[number][1]
 
     return render(request, "main/explore.html", {'allcuisine': allcuisine, 'alldrinks': alldrinks})
+
 
 
 @login_required(login_url = '/login')
@@ -120,7 +121,7 @@ def showMenu(request, cuisine):
             cuisine = c[0]
             break
 
-    #For Sending Order
+    #For Sending/Storing Food Order in Database
     if request.method == 'POST':
         
         dname = request.POST.get('dname', False)
@@ -140,6 +141,7 @@ def showMenu(request, cuisine):
     all_dish = foodMenu.objects.all().filter(cuisine__icontains = cuisine)
 
     return render(request, "main/menu.html", {'all_dish': all_dish, 'cuisine': cuisinename})
+
 
 
 @login_required(login_url = '/login')
@@ -164,7 +166,7 @@ def showBarMenu(request, drinktype):
             drinkType = drink[0]
             break
 
-    # For Sending Order Items
+    # For Sending/Storing Bar Order Items in Database
     if request.method == 'POST':
         
         dname = request.POST.get('dname', False)
@@ -181,10 +183,8 @@ def showBarMenu(request, drinktype):
                 price = totamt,
                 quantity = dqty
             )
-            print("Dyanmic")
             x = dynamicPricing(dname, dqty)
-            print(x)
-            drinkType = dtype
+            drinkType = dtype 
             drinkTypeName = dtype
 
     all_drinks = barMenu.objects.all().filter(drinktype__icontains = drinkType)
@@ -192,15 +192,12 @@ def showBarMenu(request, drinktype):
     return render(request, "main/barmenu.html",{'all_drinks': all_drinks, 'drinkTypeName': drinkTypeName})
 
 
-@login_required(login_url = '/login')
-def orderPage(request):
-    ordered = foodOrder.objects.all().filter(user = request.user)
-    bar = barOrder.objects.all().filter(user = request.user)
-    return render(request, "main/order.html", {"ordered" : ordered, 'bar' : bar})
-
-
+# Below Function is for changing the Prices of Bar Menu Items Dynamically while Ordering
 def dynamicPricing(dname, quantity):
+    
     ordered = barMenu.objects.all().filter(name = dname)
+
+    # setting the new Price of the Ordered Drink
     newPrice = ordered[0].current_price + (ordered[0].actual_price * decimal.Decimal(int(quantity)/100))
     if ordered[0].high < newPrice:
         newHigh = newPrice
@@ -208,6 +205,7 @@ def dynamicPricing(dname, quantity):
         newHigh = ordered[0].high
     barMenu.objects.all().filter(name = dname).update(current_price = newPrice, high = newHigh)
 
+    # Simultaneously updating the Prices of Fellow Drinktypes
     dtype = ordered[0].drinktype
     all_drinks = barMenu.objects.all().filter(drinktype = dtype).exclude(name = dname)
     
@@ -220,3 +218,11 @@ def dynamicPricing(dname, quantity):
         drink.save()
         
     return 1
+
+
+# Rendering the Order Page for a User.
+@login_required(login_url = '/login')
+def orderPage(request):
+    ordered = foodOrder.objects.all().filter(user = request.user)
+    bar = barOrder.objects.all().filter(user = request.user)
+    return render(request, "main/order.html", {"ordered" : ordered, 'bar' : bar})
