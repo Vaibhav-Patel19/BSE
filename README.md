@@ -32,6 +32,8 @@ A Web-App for Interactive and Innovative way of Ordering Food/Drinks in a Restau
 
 - Bar Stock Exchange is Web-Based Mobile Application which can be used in Restaurant-Bars, replacing Hardcopy Menu for Food and Drinks Ordering.
 
+- Users can Scan the QR Code available and user the App.
+
 - Whats Unique about this application is that a Stock Market Theme is implemented while ordering any drink using the application. 
 
 - Prices of Drinks increases and Decreases Dynamically(async) while Ordering drinks, backed by algorithms created for changing the prices.
