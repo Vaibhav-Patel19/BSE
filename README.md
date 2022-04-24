@@ -1,4 +1,9 @@
-![image](https://user-images.githubusercontent.com/72696677/147384776-f1294f06-537e-4f1a-a5e8-d2985f769227.png)
+
+# Restaurant/Cafe/Bar Order Management App 
+
+Logo            |  📱
+:-------------------------:|:-------------------------:
+![image](https://user-images.githubusercontent.com/72696677/147384776-f1294f06-537e-4f1a-a5e8-d2985f769227.png)  |  ![BSE_QRCode](https://user-images.githubusercontent.com/72696677/164976243-b78d710e-18af-4302-84b3-ed142399aede.png)
 
 ## Project Background
 
@@ -17,7 +22,20 @@
 - Main App includes these Pages and their different views/functionalities – Home, Explore, Menu, Bar menu, Order Page
 
 - Registration App contains the Landing(index) Page which is used for scanning the QR code which will redirect user to registration page of app.
-- Here are some Screenshots of the Application : 
+
+
++ Objective
++ Project Backgorund
++ Tools and Technology Used
++ List of Tables 
++ Screenshots
++ Bug Repoerting
++ Feature Request
++ Getting Started
++ License
+
+
+## Here are some Screenshots of the Application : 
 
 ![image](https://user-images.githubusercontent.com/72696677/147385238-ad4cd89f-69d6-4547-b1b7-5df01b5276ec.png)
 
