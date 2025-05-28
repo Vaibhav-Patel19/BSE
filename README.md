@@ -50,6 +50,89 @@ A Web-App for Interactive and Innovative way of Ordering Food/Drinks in a Restau
 
   - Payments App provides payment of bill facility to a user. Integrated RazorPay Payments Sytems in which user can pay through all Online Payments modes possible.
 
+Bar Stock Exchange (BSE) - Project Summary
+
+## Project Overview
+
+Bar Stock Exchange (BSE) is an innovative web-based mobile application designed to revolutionize the food and drink ordering experience in restaurants, cafes, and bars. The project replaces traditional hardcopy menus with a digital solution that allows customers to scan a QR code, browse menu items, place orders, and make payments—all without requiring waiter intervention. What sets this application apart is its unique stock market-themed approach to drink pricing, where beverage prices dynamically fluctuate in real-time based on demand algorithms, creating an interactive and gamified ordering experience.
+
+## Key Features
+
+Dynamic Pricing System
+
+Implemented a stock market-inspired algorithm that causes drink prices to increase or decrease asynchronously during the ordering process
+Created real-time price updates using AJAX and jQuery to provide immediate feedback to users without page reloads
+Designed visual indicators showing price trends to enhance the interactive experience
+QR Code-Based Access
+
+Developed a streamlined entry system where customers scan a QR code to access the digital menu
+Eliminated the need for app installation, making the solution instantly accessible on any mobile device
+Integrated with the registration system to track customer orders and preferences
+End-to-End Payment Solution
+
+Implemented Razorpay payment gateway integration for secure online transactions
+Supported multiple payment methods including credit/card, UPI, and digital wallets
+Created a comprehensive payment tracking system with detailed bill generation
+User Authentication
+
+Integrated Google Sign-In functionality using the Gmail API to simplify the authentication process
+Implemented social authentication to reduce friction in the user onboarding experience
+Created secure user session management for order tracking and history
+Responsive UI/UX Design
+
+Designed a mobile-first interface optimized for various screen sizes and devices
+Implemented smooth scrolling and intuitive navigation for enhanced user experience
+Created visually appealing menu displays with filtering options (Newest, Most Ordered)
+
+## Technical Architecture
+
+Modular Django Structure
+
+The application follows a modular architecture with three primary Django apps:
+Main App: Core functionality including home page, explore section, menu displays (food and bar), and order management
+Registration App: Handles user authentication, QR code scanning, and account management
+Payments App: Manages the entire payment flow, Razorpay integration, and billing
+Technology Stack
+
+Backend: Python with Django framework
+Frontend: HTML, CSS, JavaScript, jQuery, AJAX
+Database: SQLite
+Payment Processing: Razorpay API
+Authentication: Google OAuth (Gmail API)
+Deployment: Azure App Service (as indicated by deployment files)
+Data Models
+
+The application uses several key data models:
+User profiles for customer information
+Food and bar menu items with dynamic attributes
+Order tracking for both food and drink items
+Payment records linked to user orders
+Implementation Highlights
+
+Asynchronous Price Updates
+
+The dynamic pricing system uses asynchronous JavaScript to update drink prices in real-time without requiring page refreshes, creating a fluid and interactive experience similar to watching stock market fluctuations.
+Comprehensive Testing
+
+The codebase includes unit tests for views and models, demonstrating a commitment to code quality and reliability. Test files show coverage of critical functionality including order processing and payment handling.
+Admin Dashboard
+
+A custom admin interface allows restaurant staff to manage menu items, track orders, and monitor sales performance. The admin panel provides insights into popular items and peak ordering times.
+Deployment Configuration
+
+The project includes Azure deployment workflows, indicating production readiness and cloud deployment capabilities.
+
+## Business Value
+
+Enhanced Customer Experience: Eliminates wait times for ordering and payment, improving overall satisfaction
+COVID-19 Safety: Addresses hygiene concerns by removing shared physical menus
+Increased Engagement: The gamified pricing creates a unique, memorable experience that differentiates venues
+Operational Efficiency: Reduces staff requirements for taking orders and processing payments
+Data Collection: Provides valuable insights into customer preferences and ordering patterns
+
+## Conclusion
+
+Bar Stock Exchange represents an innovative solution to modernize the restaurant and bar experience through digital transformation. By combining dynamic pricing algorithms with a seamless mobile ordering system, the application creates a unique value proposition for both businesses and customers. The modular Django architecture ensures maintainability and extensibility, while the comprehensive feature set addresses the end-to-end journey from menu browsing to payment processing.
 
 <a id = "getting-started"></a>
 ## Getting Started
